@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="209ca460-a724-4164-84cb-4c36debcf3c9" name="Default" comment="Rework Building upgrade">
+    <list default="true" id="209ca460-a724-4164-84cb-4c36debcf3c9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base/viewStructures.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base/viewStructures.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/Structure.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/Structure.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php" />
     </list>
     <ignored path="TheGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +26,8 @@
       <file leaf-file-name="StructureUpgrade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/StructureUpgrade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+            <state relative-caret-position="88">
+              <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -525,7 +521,7 @@
       <workItem from="1481615828485" duration="19255000" />
       <workItem from="1481641558795" duration="642000" />
       <workItem from="1481642385451" duration="4735000" />
-      <workItem from="1481653440386" duration="8150000" />
+      <workItem from="1481653440386" duration="8189000" />
     </task>
     <task id="LOCAL-00001" summary="Basic fights &#10;">
       <created>1481660618517</created>
@@ -534,11 +530,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481660618517</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Rework Building upgrade -step1">
+      <created>1481663329685</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1481663329685</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174047000" />
+    <option name="totallyTimeSpent" value="174086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -578,7 +581,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic fights &#10;" />
     <MESSAGE value="Rework Building upgrade" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework Building upgrade" />
+    <MESSAGE value="Rework Building upgrade -step1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rework Building upgrade -step1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -975,8 +979,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/StructureUpgrade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+        <state relative-caret-position="88">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
           <folding />
         </state>
       </provider>
