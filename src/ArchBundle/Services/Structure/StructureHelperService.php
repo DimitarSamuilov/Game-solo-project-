@@ -6,6 +6,7 @@ namespace ArchBundle\Services\Structure;
 use ArchBundle\Entity\Base;
 use ArchBundle\Entity\Structure;
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\ORM\EntityManager;
 
 
 /**
@@ -44,6 +45,7 @@ class StructureHelperService implements StructureHelperServiceInterface
         return $count >= sizeof($neededResources);
     }
 
+
     private function findNeededResources($upgradeCost, $level)
     {
         $neededResources = [];
@@ -71,6 +73,7 @@ class StructureHelperService implements StructureHelperServiceInterface
      * @param $doctrine Registry
      * @param $baseId
      * @param $structureId
+     *
      */
     public function allocateUpgradeResources($doctrine, $baseId, $structureId)
     {
@@ -78,15 +81,13 @@ class StructureHelperService implements StructureHelperServiceInterface
         $upgradeCost = $structure->getStructureName()->getStructureCost();
         $currentLevel = $structure->getLevel();
         $neededResourcesArray = $this->findNeededResources($upgradeCost, $currentLevel);
-        $base = $doctrine->getRepository(Base::class)->find($baseId);
-        $baseResources = $base->getResources();
+        //$base = $doctrine->getRepository(Base::class)->find($baseId);
+        $baseResources = $doctrine->getRepository(Base::class)->find($baseId)->getResources();
         $em = $doctrine->getManager();
         foreach ($baseResources as $resource) {
             $tempResource = $resource->getAmount();
-            var_dump($tempResource);
-            $tempResource = $tempResource - $neededResourcesArray[$resource->getResourceName()->getName()];
+            $tempResource -= $neededResourcesArray[$resource->getResourceName()->getName()];
             $resource->setAmount($tempResource);
-            var_dump($resource->getAmount());
             $em->persist($resource);
             $em->flush();
         }
@@ -95,5 +96,16 @@ class StructureHelperService implements StructureHelperServiceInterface
         $em->flush();
 
 
+    }
+
+    /**
+     * @param $em EntityManager
+     * @param $structure Structure
+     */
+    private function levelUpStructure($em,$structure)
+    {
+        $structure->setLevel($structure->getLevel()+1);
+        $em->persist($structure);
+        $em->flush();
     }
 }

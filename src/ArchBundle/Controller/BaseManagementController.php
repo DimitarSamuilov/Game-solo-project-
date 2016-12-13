@@ -40,12 +40,11 @@ class BaseManagementController extends BaseHelperController
         $id = $this->getBaseAction();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($id);
         $structures = $this->getDoctrine()->getRepository(Structure::class)->findBy(['base' => $base]);
-        $viewArray=$this->prepareStructureViewModel($structures);
+        $viewArray = $this->prepareStructureViewModel($structures);
 
         return $this->render("base/viewStructures.html.twig", ['structures' => $viewArray]);
 
     }
-
 
     private function prepareStructureViewModel($structures)
     {
@@ -60,14 +59,14 @@ class BaseManagementController extends BaseHelperController
             $tempViewObject->setId($structure->getId());
             $tempViewObject->setUsername($this->getUser()->getUsername());
             $tempViewObject->setLevel($structure->getLevel());
-            foreach ($structure->getStructureName()->getStructureCost() as $structureCost){
-                if($structureCost->getResource()->getName()=="Wood"){
-                    $tempViewObject->setWood($structureCost->getAmount()*($structure->getLevel()+1));
-                }else if($structureCost->getResource()->getName()=="Coin"){
-                    $tempViewObject->setCoin($structureCost->getAmount()*($structure->getLevel()+1));
+            foreach ($structure->getStructureName()->getStructureCost() as $structureCost) {
+                if ($structureCost->getResource()->getName() == "Wood") {
+                    $tempViewObject->setWood($structureCost->getAmount() * ($structure->getLevel() + 1));
+                } else if ($structureCost->getResource()->getName() == "Coin") {
+                    $tempViewObject->setCoin($structureCost->getAmount() * ($structure->getLevel() + 1));
                 }
             }
-            $resultViewArray[]=$tempViewObject;
+            $resultViewArray[] = $tempViewObject;
         }
 
         return $resultViewArray;
@@ -91,17 +90,16 @@ class BaseManagementController extends BaseHelperController
     }
 
     /**
-     * @Route("/structure/upgrade/{id}",name="base_structure_upgrade")
+     * @Route("/structure/upgrade/{structureId}",name="base_structure_upgrade")
      *
      */
-    public function upgradeStructure($id)
+    public function upgradeStructure($structureId)
     {
 
-        $haveNeededResources = $this->get('services')->getStructureHelper()->setUpgrade($this->getDoctrine(), $id);
+        $haveNeededResources = $this->get('services')->getStructureHelper()->setUpgrade($this->getDoctrine(), $structureId);
         if ($haveNeededResources) {
-            $this->get('services')->getStructureHelper()->allocateUpgradeResources($this->getDoctrine(), $this->getBaseAction(), $id);
+            $this->get('services')->getStructureHelper()->allocateUpgradeResources($this->getDoctrine(), $this->getBaseAction(), $structureId);
         }
-
         return $this->redirectToRoute("base_structure");
     }
 

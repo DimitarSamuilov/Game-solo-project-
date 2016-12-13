@@ -20,7 +20,12 @@ class Structure
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    /**
+     * @var StructureUpgrade
+     * @ORM\OneToOne(targetEntity="ArchBundle\Entity\StructureUpgrade",mappedBy="structure")
+     *
+     */
+    private $structureUpgrade;
     /**
      * @var int
      *
@@ -41,6 +46,25 @@ class Structure
      * @ORM\JoinTable(name="baseId")
      */
     private $base;
+
+    /**
+     * @return StructureUpgrade
+     */
+    public function getStructureUpgrade()
+    {
+        return $this->structureUpgrade;
+    }
+
+    /**
+     * @param StructureUpgrade $structureUpgrade
+     */
+    public function setStructureUpgrade($structureUpgrade)
+    {
+        $this->structureUpgrade = $structureUpgrade;
+    }
+
+
+
     /**
      * Get id
      *
