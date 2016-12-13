@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container body-content">
+        <div class="well">
+            <h2>{{ username }}'s bases</h2>
+            <div class="row">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                    <tr>
+                        <th>Unit Name</th>
+                        <th>Battle Ready Units</th>
+                        <th>Cost: Wood</th>
+                        <th>Cost: Coin</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for unit in units %}
+                        <tr>
+                            <td>{{ unit.name }}</td>
+                            <td>{{ unit.count }}</td>
+                            <td>{{ unit.wood }}</td>
+                            <td>{{ unit.coin }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a class="btn btn-primary" href="{{ path("units_produce") }}">Produce</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

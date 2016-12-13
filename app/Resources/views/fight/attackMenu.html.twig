@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    {{ form_start(form) }}
+    {{ form_row(form.units) }}
+    {% for name in form.units  %}
+        {{ form_row(name.count) }}
+    {% endfor %}
+    {{ form_end(form) }}
+{% endblock %}
+

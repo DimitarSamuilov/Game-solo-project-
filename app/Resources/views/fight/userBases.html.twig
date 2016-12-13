@@ -1,0 +1,32 @@
+
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container body-content">
+        <div class="well">
+            <h2>Players bases </h2>
+            <div class="row">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                    <tr>
+                        <th>Base:</th>
+                        <th>Belongs To:</th>
+                        <td>Travel time [D-H-M-S]:</td>
+                        <th>Attack</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for base in bases %}
+                        <tr>
+                            <td>{{ base.id }}--[{{ base.x }}:{{ base.y }} ]</td>
+                            <td>{{ base.userUsername }}</td>
+                            <td>{{ base.time }}</td>
+                            <td><a href="#">Attack</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

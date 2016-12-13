@@ -1,0 +1,41 @@
+
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container body-content">
+        <div class="well">
+            <h2>{{ username }}'s bases</h2>
+            <div class="row">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Coordinate X</th>
+                        <th>Coordinate Y</th>
+                        <th>View Structures</th>
+                        <th>Active Base</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for base in bases %}
+                        <tr>
+                        <tr >
+                            <td>{{ base.id }}</td>
+                            <td>{{  base.x }}</td>
+                            <td>{{ base.y }}</td>
+                            <td> <a href="{{ path("base_structure") }}">
+                                    View Structures
+                                </a></td>
+                            <td><a href="{{ path("base_change",{id:base.id} )}}">
+                                    Change Active Planet
+                                </a>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

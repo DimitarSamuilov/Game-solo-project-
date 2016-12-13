@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container body-content">
+        <div class="well">
+            <h2>All Users</h2>
+            <div class="row">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                    <tr>
+
+                        <th>Structure Name</th>
+                        <th>Current Level</th>
+                        <th>Upgrade Cost: Wood</th>
+                        <th>Upgrade Cost: Coin</th>
+                        <th>Upgrade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for structure in structures %}
+                        <tr>
+                            <th>{{ structure.name }}</th>
+                            <th>{{ structure.level }}</th>
+                            <th>{{ structure.wood }}</th>
+                            <th>{{ structure.coin }}</th>
+                            <td><a href="{{ path("base_structure_upgrade",{id:structure.id}) }}">Upgrade</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
