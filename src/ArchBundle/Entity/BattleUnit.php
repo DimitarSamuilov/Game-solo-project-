@@ -2,7 +2,6 @@
 
 namespace ArchBundle\Entity;
 
-use ArchBundle\Services\Base\BaseGenerationService;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,11 +29,12 @@ class BattleUnit
     private $count;
 
     /**
-     * @var
+     * @var \DateTime
      *
-     * @ORM\Column(name="arrives_on",type="datetime");
+     * @ORM\Column(name="arrivesOn", type="datetime")
      */
     private $arrivesOn;
+
     /**
      * @var Base
      * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\Base",inversedBy="battleUnits")
@@ -50,9 +50,34 @@ class BattleUnit
     private $defenderBase;
 
     /**
+     * @var UnitName
+     *
+     * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\UnitName",inversedBy="battleUnits")
+     * @ORM\JoinTable(name="unit_name_id")
+     */
+    private $unitName;
+
+    /**
+     * @return UnitName
+     */
+    public function getUnitName()
+    {
+        return $this->unitName;
+    }
+
+    /**
+     * @param UnitName $unitName
+     */
+    public function setUnitName($unitName)
+    {
+        $this->unitName = $unitName;
+    }
+
+
+    /**
      * @return Base
      */
-    public function getAttackerBase(): Base
+    public function getAttackerBase()
     {
         return $this->attackerBase;
     }
@@ -60,7 +85,7 @@ class BattleUnit
     /**
      * @param Base $attackerBase
      */
-    public function setAttackerBase(Base $attackerBase)
+    public function setAttackerBase( $attackerBase)
     {
         $this->attackerBase = $attackerBase;
     }
@@ -68,7 +93,7 @@ class BattleUnit
     /**
      * @return Base
      */
-    public function getDefenderBase(): Base
+    public function getDefenderBase()
     {
         return $this->defenderBase;
     }
@@ -76,11 +101,10 @@ class BattleUnit
     /**
      * @param Base $defenderBase
      */
-    public function setDefenderBase(Base $defenderBase)
+    public function setDefenderBase( $defenderBase)
     {
         $this->defenderBase = $defenderBase;
     }
-
 
 
     /**
@@ -115,6 +139,30 @@ class BattleUnit
     public function getCount()
     {
         return $this->count;
+    }
+
+    /**
+     * Set arrivesOn
+     *
+     * @param \DateTime $arrivesOn
+     *
+     * @return BattleUnit
+     */
+    public function setArrivesOn($arrivesOn)
+    {
+        $this->arrivesOn = $arrivesOn;
+
+        return $this;
+    }
+
+    /**
+     * Get arrivesOn
+     *
+     * @return \DateTime
+     */
+    public function getArrivesOn()
+    {
+        return $this->arrivesOn;
     }
 }
 

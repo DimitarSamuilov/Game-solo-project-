@@ -4,15 +4,7 @@ namespace ArchBundle\Controller;
 
 
 use ArchBundle\Entity\Base;
-use ArchBundle\Entity\Unit;
-use ArchBundle\Entity\UnitName;
-use ArchBundle\Entity\User;
 use ArchBundle\Form\AttackFormType;
-use ArchBundle\Form\UnitAttackFormType;
-
-use ArchBundle\Models\Utility\AttackFormHelper;
-use ArchBundle\Models\Utility\FightingUnit;
-use ArchBundle\Models\ViewModel\PlayerBaseModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -26,9 +18,9 @@ class FightsController extends BaseHelperController
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/players",name="fight_players")
+     * @Route("/",name="fight_players")
      */
-    public function listPlayerBases()
+    public function listPlayerBasesAction()
     {
         $bases = $this->getDoctrine()->getRepository(Base::class)->findAll();
         $currentBase = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
@@ -41,36 +33,27 @@ class FightsController extends BaseHelperController
 
     /**
      *
-     * @Route("/attackMenu",name="fight_attack_menu")
+     * @Route("/attackMenu/{id}",name="fight_attack_menu")
      */
-    public function attackMenu(Request $request)
+    public function attackAction($id,Request $request)
     {
-        $attackerBase=$this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        $service=$this->get('services')->getFightService();
-        $before=$service->mapAttackerUnits($attackerBase->getUnits());
-        $form=$this->createForm(AttackFormType::class,$attackerBase);
+        $fightService=$this->get('services')->getFightService();
+        $attackerBase = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
+        $service = $this->get('services')->getFightService();
+        $before = $service->mapAttackerUnits($attackerBase->getUnits());
+        $form = $this->createForm(AttackFormType::class, $attackerBase);
         $form->handleRequest($request);
-        if($form->isSubmitted() and $form->isValid()){
-
-            var_dump($before);
-            foreach ($attackerBase->getUnits() as $unit){
-                var_dump($unit->getCount());
+        if ($form->isSubmitted() and $form->isValid()) {
+            if ($service->areMoreSoldiersAdded($before, $attackerBase->getUnits())) {
+                return $this->render("fight/attackMenu.html.twig", ['form' => $form->createView()]);
             }
-           /*if($service->areMoreSoldiersAdded($before,$attackerBase->getUnits())){
-               return $this->render("fight/attackMenu.html.twig",['form'=>$form->createView()]);
-           }*/
+            $defenderBase = $this->getDoctrine()->getRepository(Base::class)->find($id);
+            $mappedResults = $service->mapAttackerUnits($attackerBase->getUnits());
+            $service->sendArmy($attackerBase, $defenderBase, $mappedResults,$before, $this->getDoctrine());
+            $fightService->organiseAssault($attackerBase,$defenderBase,$this->getDoctrine());
+            return $this->redirectToRoute('fight_players');
         }
-       return $this->render("fight/attackMenu.html.twig",['form'=>$form->createView()]);
+        return $this->render("fight/attackMenu.html.twig", ['form' => $form->createView()]);
     }
-    /**
-     * @Route("/test")
-     */
-    public function test()
-    {
-        $fighterService = $this->get('services')->getFightService();
-        $doctrine = $this->getDoctrine();
-        $attacker = $doctrine->getRepository(Base::class)->find(9);
-        $defenderBase = $doctrine->getRepository(Base::class)->find(2);
-        $fighterService->organiseAssault($attacker, $defenderBase, $attacker->getUnits(),$fighterService->mapAttackerUnits($attacker->getUnits()) ,$doctrine);
-    }
+
 }

@@ -3,15 +3,11 @@
 namespace ArchBundle\Controller;
 
 use ArchBundle\Entity\Base;
-use ArchBundle\Entity\ResourceName;
 use ArchBundle\Entity\Structure;
 use ArchBundle\Entity\StructureCost;
-use ArchBundle\Entity\StructureName;
-use ArchBundle\Entity\User;
 use ArchBundle\Models\ViewModel\StructureViewModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -102,7 +98,6 @@ class BaseManagementController extends BaseHelperController
     {
 
         $haveNeededResources = $this->get('services')->getStructureHelper()->setUpgrade($this->getDoctrine(), $id);
-
         if ($haveNeededResources) {
             $this->get('services')->getStructureHelper()->allocateUpgradeResources($this->getDoctrine(), $this->getBaseAction(), $id);
         }

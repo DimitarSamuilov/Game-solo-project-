@@ -3,13 +3,8 @@
 namespace ArchBundle\Form;
 
 use ArchBundle\Entity\Base;
-use ArchBundle\Entity\Unit;
-use ArchBundle\Entity\UnitName;
-use Doctrine\ORM\Mapping\Entity;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,7 +20,7 @@ class AttackFormType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        //$resolver->setDefaults(['data_class'=>Base::class]);
+        $resolver->setDefaults(['data_class'=>Base::class]);
     }
 
     public function getName()

@@ -9,10 +9,10 @@
 namespace ArchBundle\Services\Fight;
 
 use ArchBundle\Entity\Base;
+use ArchBundle\Entity\BattleUnit;
 use ArchBundle\Entity\Unit;
 use ArchBundle\Entity\UnitName;
 use ArchBundle\Entity\User;
-use ArchBundle\Models\Utility\FightingUnit;
 use ArchBundle\Models\ViewModel\PlayerBaseModel;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 
@@ -22,26 +22,72 @@ class FightService implements FightServiceInterface
     const MAX_ARMY_RETURN = 4;
 
     /**
+     * @param $attackerBase
+     * @param $defenderBase
+     * @param $armyArr
+     * @param $doctrine Registry
+     * @param $before array
+     */
+    public function sendArmy($attackerBase, $defenderBase, $armyArr, $before, $doctrine)
+    {
+        $em = $doctrine->getEntityManager();
+        $unitNames = $doctrine->getRepository(UnitName::class)->findAll();
+        foreach ($unitNames as $unit) {
+            $battleUnits = new BattleUnit();
+            $battleUnits->setAttackerBase($attackerBase);
+            $battleUnits->setDefenderBase($defenderBase);
+            $battleUnits->setUnitName($unit);
+            $battleUnits->setCount($armyArr[$unit->getName()]);
+            $battleUnits->setArrivesOn(new \DateTime());
+            $em->persist($battleUnits);
+            $em->flush();
+        }
+        $this->subtractAttackerUnits($attackerBase, $armyArr, $before, $doctrine);
+    }
+
+    /**
+     * @param $attackerBase Base
+     * @param $armyArr
+     * @param $doctrine Registry
+     * @param $before array
+     */
+    private function subtractAttackerUnits($attackerBase, $armyArr, $before, $doctrine)
+    {
+        /**
+         * @var $unit Unit
+         */
+        foreach ($attackerBase->getUnits() as $unit) {
+            $unit->setCount($before[$unit->getUnitName()->getName()] - $armyArr[$unit->getUnitName()->getName()]);
+        }
+        $em = $doctrine->getManager();
+        $em->persist($attackerBase);
+        $em->flush();
+    }
+
+    /**
      * @param $attackerBase Base
      * @param $defenderBase Base
-     * @param $attackerUnits
-     * @param $doctrine
+     * @param $doctrine Registry
      * @param $before
      */
-    public function organiseAssault($attackerBase, $defenderBase, $attackerUnits,$before, $doctrine)
+    public function organiseAssault($attackerBase, $defenderBase, $doctrine)
     {
-
+        $attackerUnits=$doctrine->getRepository(BattleUnit::class)->findBy(['attackerBase'=>$attackerBase,'defenderBase'=>$defenderBase]);
         $battleResult = $this->isBaseDestroyed($attackerUnits, $defenderBase->getUnits());
         if ($battleResult[0] === true) {
-            echo 'base Destroyed';
 
-            $this->attackerWins($attackerBase->getUser(),$this->mapAttackerUnits($attackerUnits),$defenderBase,$doctrine);
+            /*if($battleResult[1] !=true){
+                $attackerUnits=$this->battleCasualties($attackerUnits);
+            }*/
+            echo 'base Destroyed';
+            $this->attackerWins($attackerBase->getUser(), $this->mapAttackerUnits($attackerUnits), $defenderBase, $doctrine);
+            $this->nullifyBattleUnits($attackerUnits,$doctrine);
         } else {
             echo 'base Survived';
-             if ($battleResult[1] != true) {
-                 $defenderBase->setUnits($this->battleCasualties($defenderBase->getUnits()));
-             }
-             $this->defenderHolds($defenderBase, $doctrine);
+            if ($battleResult[1] != true) {
+                $defenderBase->setUnits($this->battleCasualties($defenderBase->getUnits()));
+            }
+            $this->defenderHolds($defenderBase, $doctrine);
         }
     }
 
@@ -54,8 +100,7 @@ class FightService implements FightServiceInterface
     private function attackerWins($attacker, $attackerUnits, $defenderBase, $doctrine)
     {
         $defenderBase->setUser($attacker);
-        $defenderUnits = $defenderBase->getUnits();
-        foreach ($defenderUnits as $unit) {
+        foreach ($defenderBase->getUnits() as $unit) {
             $unitName = $unit->getUnitName()->getName();
             if (!array_key_exists($unitName, $attackerUnits)) {
                 $unit->setCount(0);
@@ -63,34 +108,46 @@ class FightService implements FightServiceInterface
                 $unit->setCount($attackerUnits[$unitName]);
             }
         }
-        $defenderBase->setUnits($defenderUnits);
         $em = $doctrine->getManager();
         $em->persist($defenderBase);
         $em->flush();
     }
 
     /**
+     * @param $battleUnits array
+     * @param $doctrine Registry
+     * @var $unit BattleUnit
+     */
+    private function nullifyBattleUnits($battleUnits,$doctrine)
+    {
+        $em=$doctrine->getManager();
+        foreach ($battleUnits as $unit){
+            $em->remove($unit);
+            $em->flush();
+        }
+    }
+    /**
      * @param $defenderBase Base
      * @param $doctrine Registry
      */
     private function defenderHolds($defenderBase, $doctrine)
     {
-        $em = $doctrine->getManager();
+/*        $em = $doctrine->getManager();
         $em->persist($defenderBase);
-        $em->flush();
+        $em->flush();*/
     }
 
 
-    public function battleCasualties($attackerForces)
+    public function battleCasualties($forces)
     {
         /**
-         * @var $units FightingUnit
+         * @var $units Unit
          */
-        foreach ($attackerForces as $units) {
+        foreach ($forces as $units) {
             $survivalRate = rand(self::MIN_ARMY_RETURN, self::MAX_ARMY_RETURN) / 10;
             $units->setCount(round($units->getCount() * $survivalRate));
         }
-        return $attackerForces;
+        return $forces;
     }
 
 
@@ -182,13 +239,13 @@ class FightService implements FightServiceInterface
         return $resultArray;
     }
 
-    public function areMoreSoldiersAdded($currentUnits,$newlyEnteredUnits)
+    public function areMoreSoldiersAdded($currentUnits, $newlyEnteredUnits)
     {
         /**
          * @var $unit Unit
          */
         foreach ($newlyEnteredUnits as $unit) {
-            if($unit->getCount()>$currentUnits[$unit->getUnitName()->getName()] or ($unit->getCount()<0)){
+            if ($unit->getCount() > $currentUnits[$unit->getUnitName()->getName()] or ($unit->getCount() < 0)) {
                 return true;
             }
         }

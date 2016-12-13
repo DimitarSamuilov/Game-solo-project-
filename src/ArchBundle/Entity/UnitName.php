@@ -53,11 +53,39 @@ class UnitName
      */
     private $unitCost;
 
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\BattleUnit",mappedBy="unitName")
+     */
+    private $battleUnits;
+
     public function __construct()
     {
+        $this->battleUnits=new ArrayCollection();
         $this->units = new ArrayCollection();
         $this->unitCost = new ArrayCollection();
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBattleUnits()
+    {
+        return $this->battleUnits;
+    }
+
+    /**
+     * @param ArrayCollection $battleUnits
+     */
+    public function setBattleUnits($battleUnits)
+    {
+        $this->battleUnits = $battleUnits;
+    }
+
+
+
 
     /**
      * @return int

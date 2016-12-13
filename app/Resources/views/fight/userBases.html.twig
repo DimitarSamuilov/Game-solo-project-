@@ -21,7 +21,7 @@
                             <td>{{ base.id }}--[{{ base.x }}:{{ base.y }} ]</td>
                             <td>{{ base.userUsername }}</td>
                             <td>{{ base.time }}</td>
-                            <td><a href="#">Attack</a></td>
+                            <td><a href="{{ path("fight_attack_menu",{id:base.id}) }}">Attack</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
