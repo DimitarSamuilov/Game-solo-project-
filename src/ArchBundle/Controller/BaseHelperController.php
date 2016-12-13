@@ -43,7 +43,6 @@ class BaseHelperController extends Controller
     public function renderActiveBaseAction()
     {
         $base=$this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        var_dump($base);
         return $this->render("base/partials/activeBase.html.twig",['base'=>$base]);
     }
 
