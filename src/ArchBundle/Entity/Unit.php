@@ -42,13 +42,14 @@ class Unit
     private $base;
 
     /**
-     * @var UnitProduction
-     * @ORM\OneToOne(targetEntity="ArchBundle\Entity\UnitProduction",mappedBy="unit")
+     * @var
+     * @ORM\OneToOne(targetEntity="ArchBundle\Entity\UnitProduction",mappedBy="unit");
+     *
      */
     private $unitProduction;
 
     /**
-     * @return UnitProduction
+     * @return mixed
      */
     public function getUnitProduction()
     {
@@ -56,7 +57,7 @@ class Unit
     }
 
     /**
-     * @param UnitProduction $unitProduction
+     * @param mixed $unitProduction
      */
     public function setUnitProduction($unitProduction)
     {

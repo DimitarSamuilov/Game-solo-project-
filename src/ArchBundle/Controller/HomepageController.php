@@ -21,10 +21,7 @@ class HomepageController extends Controller
         return $this->render('game/index.html.twig');
     }
 
-    /**
-     * @Route("/profile",name="user_profile")
-     */
-    public function profilePageAction(){}
+
 
 
 }

@@ -153,7 +153,7 @@ class FightService implements FightServiceInterface
     /**
      * @param $attackingForce
      * @param $defendingForce
-     * @return
+     * @return mixed
      */
     public function isBaseDestroyed($attackingForce, $defendingForce)
     {
@@ -214,7 +214,7 @@ class FightService implements FightServiceInterface
         $y = $yArr[0] - $yArr[1];
         $distance = ceil(sqrt(pow($x, 2) + pow($y, 2)));
         $distance *= 10;
-        $attackTime = new \DateTime();
+        $attackTime = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
         $attackTime = $attackTime->add(\DateInterval::createFromDateString($distance . ' seconds'));
         return $attackTime;
     }

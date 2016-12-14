@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UnitProduction
  *
- * @ORM\Table(name="unit_productions")
+ * @ORM\Table(name="unit_production")
  * @ORM\Entity(repositoryClass="ArchBundle\Repository\UnitProductionRepository")
  */
 class UnitProduction
@@ -22,13 +22,6 @@ class UnitProduction
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="amount", type="integer")
-     */
-    private $amount;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="finishesOn", type="datetime")
@@ -36,14 +29,21 @@ class UnitProduction
     private $finishesOn;
 
     /**
-     * @var Unit
+     * @var int
+     *
+     * @ORM\Column(name="amount", type="integer")
+     */
+    private $amount;
+
+    /**
+     * @var
      * @ORM\OneToOne(targetEntity="ArchBundle\Entity\Unit",inversedBy="unitProduction")
      * @ORM\JoinTable(name="unit_id")
      */
     private $unit;
 
     /**
-     * @return Unit
+     * @return mixed
      */
     public function getUnit()
     {
@@ -51,12 +51,13 @@ class UnitProduction
     }
 
     /**
-     * @param Unit $unit
+     * @param mixed $unit
      */
     public function setUnit($unit)
     {
         $this->unit = $unit;
     }
+
 
 
     /**
@@ -67,30 +68,6 @@ class UnitProduction
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set amount
-     *
-     * @param integer $amount
-     *
-     * @return UnitProduction
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Get amount
-     *
-     * @return int
-     */
-    public function getAmount()
-    {
-        return $this->amount;
     }
 
     /**
@@ -115,6 +92,30 @@ class UnitProduction
     public function getFinishesOn()
     {
         return $this->finishesOn;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     *
+     * @return UnitProduction
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return int
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }
 

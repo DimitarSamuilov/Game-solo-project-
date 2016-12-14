@@ -27,7 +27,7 @@ class StructureController extends BaseHelperController
 
         $service = $this->get('services')->getStructureHelper();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        $service->structureUpgradeProcessing($this->getBaseAction(), $this->getDoctrine());
+        // $service->structureUpgradeProcessing($this->getBaseAction(), $this->getDoctrine());
         $structures = $base->getStructures();
         $viewArray = $service->prepareStructureViewModel($structures, $this->getUser());
         return $this->render("base/viewStructures.html.twig", ['structures' => $viewArray]);
@@ -45,9 +45,16 @@ class StructureController extends BaseHelperController
         if ($haveNeededResources) {
             $structure = $this->getDoctrine()->getRepository(Structure::class)->find($structureId);
             $service->beginUpgrade($structure, $this->getDoctrine());
-            $service->allocateUpgradeResources($this->getBaseAction(), $structure, $this->getDoctrine());
+            //$service->allocateUpgradeResources($this->getBaseAction(), $structure, $this->getDoctrine());
         }
         return $this->redirectToRoute("base_structure");
     }
 
+    /**
+     * @Route("/test")
+     */
+    public function test()
+    {
+        $this->get('services')->getStructureHelper()->structureUpgradeProcessing($this->getBaseAction(),$this->getDoctrine());
+    }
 }

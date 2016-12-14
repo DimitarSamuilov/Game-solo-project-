@@ -20,12 +20,7 @@ class Structure
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    /**
-     * @var StructureUpgrade
-     * @ORM\OneToOne(targetEntity="ArchBundle\Entity\StructureUpgrade",mappedBy="structure")
-     *
-     */
-    private $structureUpgrade;
+
     /**
      * @var int
      *
@@ -47,8 +42,15 @@ class Structure
      */
     private $base;
 
+
     /**
-     * @return StructureUpgrade
+     * @var
+     * @ORM\OneToOne(targetEntity="ArchBundle\Entity\StructureUpgrade",mappedBy="structure")
+     */
+    private $structureUpgrade;
+
+    /**
+     * @return mixed
      */
     public function getStructureUpgrade()
     {
@@ -56,13 +58,12 @@ class Structure
     }
 
     /**
-     * @param StructureUpgrade $structureUpgrade
+     * @param mixed $structureUpgrade
      */
     public function setStructureUpgrade($structureUpgrade)
     {
         $this->structureUpgrade = $structureUpgrade;
     }
-
 
 
     /**

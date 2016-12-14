@@ -1,7 +1,6 @@
 <?php
 
 namespace ArchBundle\Controller;
-
 use Alpha\B;
 use ArchBundle\Entity\Base;
 use ArchBundle\Entity\ResourceName;
@@ -27,7 +26,7 @@ class UnitsController extends BaseHelperController
      */
     public function ViewUnitsAction()
     {
-
+        $this->get('services')->getUnitHelper()->unitProductionProcessing($this->getBaseAction(),$this->getDoctrine());
         $username = $this->getUser()->getUsername();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
         $unitsRepo = $this->getDoctrine()->getRepository(Unit::class)->findBy(['base' => $base]);
@@ -52,17 +51,10 @@ class UnitsController extends BaseHelperController
             if (!$unitService->haveNeededResources($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine())) {
                 return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
             }
-            $unitService->beginProduction($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine());
+            //$unitService->beginProduction($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine());
             return $this->redirectToRoute("base_units_view");
         }
         return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
     }
 
-    /**
-     * @Route("/test")
-     */
-    public function test()
-    {
-        $this->get('services')->getUnitHelper()->unitProductionProcessing($this->getBaseAction(), $this->getDoctrine());
-    }
 }

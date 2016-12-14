@@ -29,14 +29,14 @@ class StructureUpgrade
     private $finishesOn;
 
     /**
-     * @var Structure
+     * @var
      * @ORM\OneToOne(targetEntity="ArchBundle\Entity\Structure",inversedBy="structureUpgrade")
      * @ORM\JoinTable(name="structure_id")
      */
     private $structure;
 
     /**
-     * @return Structure
+     * @return mixed
      */
     public function getStructure()
     {
@@ -44,7 +44,7 @@ class StructureUpgrade
     }
 
     /**
-     * @param Structure $structure
+     * @param mixed $structure
      */
     public function setStructure($structure)
     {

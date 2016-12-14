@@ -54,7 +54,18 @@ class UserController extends BaseHelperController
     {
         $this->getBaseAction();
         $base=$this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        $this->get('services')->getStructureHelper()->structureUpgradeStatus($base->getStructures(),$this->getDoctrine());
+        $this->get('services')->getStructureHelper()->structureUpgradeProcessing($base->getId(),$this->getDoctrine());
+        $this->get('services')->getUnitHelper()->unitProductionProcessing($base->getId(),$this->getDoctrine());
         return $this->redirectToRoute("game_index");
+    }
+
+    /**
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Route("/profile",name="user_profile")
+     */
+    public function profilePageAction()
+    {
+        $base=$this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
+        return $this->render('/user/profile.html.twig',['base'=>$base]);
     }
 }

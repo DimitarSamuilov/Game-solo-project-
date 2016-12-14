@@ -23,9 +23,11 @@ class StructureHelperService implements StructureHelperServiceInterface
     /**
      * @param $baseId
      * @param $doctrine Registry
+     * @return mixed
      */
     public function structureUpgradeProcessing($baseId, $doctrine)
     {
+        $result =false;
         $structures=$doctrine->getRepository(Base::class)->find($baseId)->getStructures();
         /**
          * @var  $structure Structure
@@ -38,11 +40,33 @@ class StructureHelperService implements StructureHelperServiceInterface
             if ($currentDate < $structure->getStructureUpgrade()->getFinishesOn()) {
                 continue;
             }
-            $this->levelUpStructure($structure, $doctrine->getManager());
-            $this->clearUpgradeEntry($structure->getStructureUpgrade(), $doctrine->getManager());
+            $em=$doctrine->getManager();
+            $structure->setLevel($structure->getLevel() + 1);
+            $em->persist($structure);
+            $em->flush();
+
         }
     }
 
+    /**
+     * @param $em EntityManager
+     * @param $structure Structure
+     */
+    private function levelUpStructure($structure, $em)
+    {
+
+    }
+
+
+    /**
+     * @param $upgrades array
+     * @param $em EntityManager
+     */
+    private function clearUpgradeEntry($upgrades, $em)
+    {
+
+
+    }
     private function calculateUpgradeTime($time, $level)
     {
         $interval = ($time + $level) * 10;
@@ -184,24 +208,5 @@ class StructureHelperService implements StructureHelperServiceInterface
 
     }
 
-    /**
-     * @param $em EntityManager
-     * @param $structure Structure
-     */
-    private function levelUpStructure($structure, $em)
-    {
-        $structure->setLevel($structure->getLevel() + 1);
-        $em->persist($structure);
-        $em->flush();
-    }
 
-    /**
-     * @param $upgrade
-     * @param $em EntityManager
-     */
-    private function clearUpgradeEntry($upgrade, $em)
-    {
-        $em->remove($upgrade);
-        $em->flush();
-    }
 }
