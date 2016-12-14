@@ -66,21 +66,21 @@ class Base
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="ArchBundle\Entity\BattleUnit",mappedBy="attackerBase")
      */
-     private $battleUnits;
+    private $battleUnits;
 
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="ArchBundle\Entity\BattleUnit",mappedBy="defenderBase")
      */
-     private $battleUnitsDefense;
+    private $battleUnitsDefense;
 
     /**
      * Base constructor.
      */
     public function __construct()
     {
-       $this->battleUnitsDefense=new ArrayCollection();
-        $this->battleUnits=new ArrayCollection();
+        $this->battleUnitsDefense = new ArrayCollection();
+        $this->battleUnits = new ArrayCollection();
         $this->structures = new ArrayCollection();
         $this->resources = new ArrayCollection();
         $this->units = new ArrayCollection();
@@ -113,7 +113,7 @@ class Base
     /**
      * @param ArrayCollection $battleUnits
      */
-    public function setBattleUnits( $battleUnits)
+    public function setBattleUnits($battleUnits)
     {
         $this->battleUnits = $battleUnits;
     }

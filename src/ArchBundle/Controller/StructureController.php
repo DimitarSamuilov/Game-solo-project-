@@ -27,7 +27,7 @@ class StructureController extends BaseHelperController
 
         $service = $this->get('services')->getStructureHelper();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        $service->structureUpgradeStatus($base->getStructures(), $this->getDoctrine());
+        $service->structureUpgradeProcessing($this->getBaseAction(), $this->getDoctrine());
         $structures = $base->getStructures();
         $viewArray = $service->prepareStructureViewModel($structures, $this->getUser());
         return $this->render("base/viewStructures.html.twig", ['structures' => $viewArray]);
@@ -35,7 +35,8 @@ class StructureController extends BaseHelperController
 
     /**
      * @Route("/upgrade/{structureId}",name="base_structure_upgrade")
-     *
+     * @param $structureId
+     * @return Response
      */
     public function upgradeStructure($structureId)
     {
@@ -49,13 +50,4 @@ class StructureController extends BaseHelperController
         return $this->redirectToRoute("base_structure");
     }
 
-    /**
-     * @Route("/test");
-     */
-    public function test()
-    {
-        $date1 = new \DateTime();
-        $date2 = new \DateTime('2000-01-01');
-        var_dump($date1 > $date2);
-    }
 }

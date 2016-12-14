@@ -19,6 +19,6 @@ interface StructureHelperServiceInterface
 
     public function beginUpgrade($upgradeStructure, $doctrine);
 
-    public function structureUpgradeStatus($structure, $doctrine);
+    public function structureUpgradeProcessing($baseId, $doctrine);
 
 }

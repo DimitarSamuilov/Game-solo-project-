@@ -15,6 +15,43 @@ class UnitViewModel
     private $wood;
     private $coin;
     private $count;
+    private $productionTime;
+    private $productionAmount;
+
+    /**
+     * @return mixed
+     */
+    public function getProductionAmount()
+    {
+        return $this->productionAmount;
+    }
+
+    /**
+     * @param mixed $productionAmount
+     */
+    public function setProductionAmount($productionAmount)
+    {
+        $this->productionAmount = $productionAmount;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getProductionTime()
+    {
+        return $this->productionTime;
+    }
+
+    /**
+     * @param mixed $productionTime
+     */
+    public function setProductionTime($productionTime)
+    {
+        $this->productionTime = $productionTime->format('Y-m-d H:i:s');
+    }
+
 
     /**
      * @return mixed

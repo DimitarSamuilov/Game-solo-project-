@@ -12,6 +12,7 @@
                         <th>Battle Ready Units</th>
                         <th>Cost: Wood</th>
                         <th>Cost: Coin</th>
+                        <th>Production</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -21,6 +22,11 @@
                             <td>{{ unit.count }}</td>
                             <td>{{ unit.wood }}</td>
                             <td>{{ unit.coin }}</td>
+                            {% if unit.productionTime %}
+                                <td>{{  unit.productionTime }}|{{ unit.productionAmount }} </td>
+                                {% else %}
+                                <td>N/A</td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                     </tbody>

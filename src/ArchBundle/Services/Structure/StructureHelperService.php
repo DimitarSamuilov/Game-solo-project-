@@ -21,24 +21,25 @@ class StructureHelperService implements StructureHelperServiceInterface
 {
 
     /**
-     * @param $structures
+     * @param $baseId
      * @param $doctrine Registry
      */
-    public function structureUpgradeStatus($structures, $doctrine)
+    public function structureUpgradeProcessing($baseId, $doctrine)
     {
+        $structures=$doctrine->getRepository(Base::class)->find($baseId)->getStructures();
         /**
          * @var  $structure Structure
          */
         foreach ($structures as $structure) {
             if ($structure->getStructureUpgrade() === null) {
-                return;
+                continue;
             }
             $currentDate = new \DateTime();
             if ($currentDate < $structure->getStructureUpgrade()->getFinishesOn()) {
-                return;
+                continue;
             }
             $this->levelUpStructure($structure, $doctrine->getManager());
-            $this->removeUpgradeEntry($structure->getStructureUpgrade(), $doctrine->getManager());
+            $this->clearUpgradeEntry($structure->getStructureUpgrade(), $doctrine->getManager());
         }
     }
 
@@ -198,7 +199,7 @@ class StructureHelperService implements StructureHelperServiceInterface
      * @param $upgrade
      * @param $em EntityManager
      */
-    private function removeUpgradeEntry($upgrade, $em)
+    private function clearUpgradeEntry($upgrade, $em)
     {
         $em->remove($upgrade);
         $em->flush();

@@ -5,5 +5,11 @@ namespace ArchBundle\Services\Unit;
 interface UnitHelperInterface
 {
 
-    public function setProduction($doctrine,$unitName,$unitCount,$baseId);
+    public function beginProduction($unitName,$base, $amount, $doctrine);
+
+    public function haveNeededResources($unitId,$base,$unitAmount,$doctrine);
+
+    public function unitProductionProcessing($baseId,$doctrine);
+
+    public function getViewArray($unitRepo);
 }

@@ -35,6 +35,29 @@ class UnitProduction
      */
     private $finishesOn;
 
+    /**
+     * @var Unit
+     * @ORM\OneToOne(targetEntity="ArchBundle\Entity\Unit",inversedBy="unitProduction")
+     * @ORM\JoinTable(name="unit_id")
+     */
+    private $unit;
+
+    /**
+     * @return Unit
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * @param Unit $unit
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+    }
+
 
     /**
      * Get id

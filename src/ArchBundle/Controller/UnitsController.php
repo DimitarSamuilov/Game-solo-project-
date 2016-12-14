@@ -2,6 +2,7 @@
 
 namespace ArchBundle\Controller;
 
+use Alpha\B;
 use ArchBundle\Entity\Base;
 use ArchBundle\Entity\ResourceName;
 use ArchBundle\Entity\Unit;
@@ -26,43 +27,12 @@ class UnitsController extends BaseHelperController
      */
     public function ViewUnitsAction()
     {
-        $em = $this->getDoctrine();
+
         $username = $this->getUser()->getUsername();
-        $base = $em->getRepository(Base::class)->find($this->getBaseAction());
-        $unitsRepo = $em->getRepository(Unit::class)->findBy(['base' => $base]);
-        $viewArray = $this->getViewArray($unitsRepo);
-        return $this->render('units/view.html.twig',['units'=>$viewArray,'username'=>$username]);
-    }
-
-    /**
-     * @param $unitRepo
-     * @return array
-     */
-    private function getViewArray($unitRepo)
-    {
-        $viewArray = [];
-
-        foreach ($unitRepo as $unit) {
-            /**
-             * @var $unit Unit
-             */
-            $tempViewObject = new UnitViewModel();
-            $tempViewObject->setName($unit->getUnitName()->getName());
-            $tempViewObject->setCount($unit->getCount());
-            $unitCosts = $unit->getUnitName()->getUnitCost();
-            foreach ($unitCosts as $unitCost) {
-                /**
-                 * @var $unitCost UnitCost
-                 */
-                if ($unitCost->getResource()->getName() == "Wood") {
-                    $tempViewObject->setWood($unitCost->getAmount());
-                } else if ($unitCost->getResource()->getName() == "Coin") {
-                    $tempViewObject->setCoin($unitCost->getAmount());
-                }
-            }
-            $viewArray[] = $tempViewObject;
-        }
-        return $viewArray;
+        $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
+        $unitsRepo = $this->getDoctrine()->getRepository(Unit::class)->findBy(['base' => $base]);
+        $viewArray = $this->get('services')->getUnitHelper()->getViewArray($unitsRepo);
+        return $this->render('units/view.html.twig', ['units' => $viewArray, 'username' => $username]);
     }
 
     /**
@@ -72,22 +42,27 @@ class UnitsController extends BaseHelperController
      */
     public function produceAction(Request $request)
     {
+        $unitService = $this->get('services')->getUnitHelper();
         $unit = new Unit();
         $unitName = $this->getDoctrine()->getRepository(UnitName::class)->findAll();
         $unit->setUnitName($unitName);
         $form = $this->createForm(ProduceUnitType::class, $unit);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
-            $this->get('services')
-                ->getUnitHelper()
-                ->setProduction(
-                    $this->getDoctrine()
-                    , $unit->getUnitName()->getName()
-                    , $unit->getCount()
-                    , $this->getBaseAction()
-                );
+            if (!$unitService->haveNeededResources($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine())) {
+                return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
+            }
+            $unitService->beginProduction($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine());
             return $this->redirectToRoute("base_units_view");
         }
         return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/test")
+     */
+    public function test()
+    {
+        $this->get('services')->getUnitHelper()->unitProductionProcessing($this->getBaseAction(), $this->getDoctrine());
     }
 }

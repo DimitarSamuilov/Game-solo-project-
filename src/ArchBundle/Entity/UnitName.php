@@ -61,12 +61,35 @@ class UnitName
      */
     private $battleUnits;
 
+    /**
+     * @var
+     * @ORM\Column(name="time",type="integer")
+     */
+    private $time;
+
     public function __construct()
     {
         $this->battleUnits=new ArrayCollection();
         $this->units = new ArrayCollection();
         $this->unitCost = new ArrayCollection();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param mixed $time
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+    }
+
 
     /**
      * @return ArrayCollection

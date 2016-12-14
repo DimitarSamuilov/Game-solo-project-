@@ -40,6 +40,30 @@ class Unit
      * @ORM\JoinTable(name="base_id")
      */
     private $base;
+
+    /**
+     * @var UnitProduction
+     * @ORM\OneToOne(targetEntity="ArchBundle\Entity\UnitProduction",mappedBy="unit")
+     */
+    private $unitProduction;
+
+    /**
+     * @return UnitProduction
+     */
+    public function getUnitProduction()
+    {
+        return $this->unitProduction;
+    }
+
+    /**
+     * @param UnitProduction $unitProduction
+     */
+    public function setUnitProduction($unitProduction)
+    {
+        $this->unitProduction = $unitProduction;
+    }
+
+
     /**
      * Get id
      *

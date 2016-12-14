@@ -20,6 +20,7 @@ class StructureViewModel
     private $username;
     private $upgradeTime;
 
+
     /**
      * @return mixed
      */
