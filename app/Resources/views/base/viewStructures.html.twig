@@ -23,7 +23,15 @@
                             <th>{{ structure.level }}</th>
                             <th>{{ structure.wood }}</th>
                             <th>{{ structure.coin }}</th>
-                            <td><a href="{{ path("base_structure_upgrade",{structureId:structure.id}) }}">Upgrade</a></td>
+                            {% if structure.upgradeTime %}
+                                <td>{{ structure.upgradeTime }}
+                                </td>
+                            {% else %}
+                                <td>
+                                    <a href="{{ path("base_structure_upgrade",{structureId:structure.id}) }}">Upgrade</a>
+                                </td>
+                            {% endif %}
+
                         </tr>
                     {% endfor %}
                     </tbody>

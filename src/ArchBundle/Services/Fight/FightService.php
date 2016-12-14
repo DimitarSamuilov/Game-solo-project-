@@ -68,7 +68,6 @@ class FightService implements FightServiceInterface
      * @param $attackerBase Base
      * @param $defenderBase Base
      * @param $doctrine Registry
-     * @param $before
      */
     public function organiseAssault($attackerBase, $defenderBase, $doctrine)
     {
@@ -203,7 +202,7 @@ class FightService implements FightServiceInterface
                 $this->calculateTime(
                     [$base->getX(), $currentBase->getX()],
                     [$base->getY(), $currentBase->getY()]
-                )->diff(new \DateTime())->format("%d-%h-%i-%s"));
+                )->format('Y-m-d H:i:s'));
             $resultArray[] = $temp;
         }
         return $resultArray;
@@ -214,7 +213,7 @@ class FightService implements FightServiceInterface
         $x = $xArr[0] - $xArr[1];
         $y = $yArr[0] - $yArr[1];
         $distance = ceil(sqrt(pow($x, 2) + pow($y, 2)));
-        $distance *= 50;
+        $distance *= 10;
         $attackTime = new \DateTime();
         $attackTime = $attackTime->add(\DateInterval::createFromDateString($distance . ' seconds'));
         return $attackTime;

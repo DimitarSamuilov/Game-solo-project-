@@ -18,7 +18,24 @@ class StructureViewModel
     private $wood;
     private $id;
     private $username;
+    private $upgradeTime;
 
+    /**
+     * @return mixed
+     */
+    public function getUpgradeTime()
+    {
+        return $this->upgradeTime;
+    }
+
+    /**
+     * @param mixed $upgradeTime
+     */
+    public function setUpgradeTime($upgradeTime)
+    {
+        $this->upgradeTime = $upgradeTime->format('Y-m-d H:i:s');
+        //$this->upgradeTime = $upgradeTime->diff(new \DateTime())->format("%d days %h hours %i minutes ");
+    }
     /**
      * @return mixed
      */

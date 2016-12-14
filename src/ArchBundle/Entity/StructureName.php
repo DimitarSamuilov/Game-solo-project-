@@ -42,6 +42,13 @@ class StructureName
      *
      */
     private $structureCost;
+
+    /**
+     * @var
+     * @ORM\Column(name="time",type="integer")
+     */
+    private $time;
+
     /**
      * StructureName constructor.
      */
@@ -50,6 +57,23 @@ class StructureName
         $this->structureCost=new ArrayCollection();
         $this->structures=new ArrayCollection();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param mixed $time
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+    }
+
 
     /**
      * Get id

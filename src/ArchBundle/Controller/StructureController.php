@@ -24,10 +24,12 @@ class StructureController extends BaseHelperController
      */
     public function viewPlayerStructuresAction()
     {
-        $id = $this->getBaseAction();
-        $base = $this->getDoctrine()->getRepository(Base::class)->find($id);
-        $structures = $this->getDoctrine()->getRepository(Structure::class)->findBy(['base' => $base]);
-        $viewArray = $this->get('services')->getStructureHelper()->prepareStructureViewModel($structures,$this->getUser());
+
+        $service = $this->get('services')->getStructureHelper();
+        $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
+        $service->structureUpgradeStatus($base->getStructures(), $this->getDoctrine());
+        $structures = $base->getStructures();
+        $viewArray = $service->prepareStructureViewModel($structures, $this->getUser());
         return $this->render("base/viewStructures.html.twig", ['structures' => $viewArray]);
     }
 
@@ -37,13 +39,12 @@ class StructureController extends BaseHelperController
      */
     public function upgradeStructure($structureId)
     {
-        $service=$this->get('services')->getStructureHelper();
+        $service = $this->get('services')->getStructureHelper();
         $haveNeededResources = $service->haveResources($this->getDoctrine(), $structureId);
         if ($haveNeededResources) {
-            $structure=$this->getDoctrine()->getRepository(Structure::class)->find($structureId);
-            $service->beginUpgrade($structure,$this->getDoctrine());
-            $service->allocateUpgradeResources($this->getBaseAction(),$structure,$this->getDoctrine());
-            $service->structureUpgradeStatus($structure,$this->getDoctrine());
+            $structure = $this->getDoctrine()->getRepository(Structure::class)->find($structureId);
+            $service->beginUpgrade($structure, $this->getDoctrine());
+            $service->allocateUpgradeResources($this->getBaseAction(), $structure, $this->getDoctrine());
         }
         return $this->redirectToRoute("base_structure");
     }
@@ -53,9 +54,8 @@ class StructureController extends BaseHelperController
      */
     public function test()
     {
-        $structure=$this->getDoctrine()->getRepository(Structure::class)->find(1);
-
-
-
+        $date1 = new \DateTime();
+        $date2 = new \DateTime('2000-01-01');
+        var_dump($date1 > $date2);
     }
 }

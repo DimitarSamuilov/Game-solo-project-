@@ -21,40 +21,62 @@ class StructureHelperService implements StructureHelperServiceInterface
 {
 
     /**
-     * @param $structure Structure
+     * @param $structures
      * @param $doctrine Registry
      */
-    public function structureUpgradeStatus($structure,$doctrine)
+    public function structureUpgradeStatus($structures, $doctrine)
     {
-      if($structure->getStructureUpgrade()===null){
-          return ;
-      }
-      $this->levelUpStructure($structure,$doctrine->getManager());
+        /**
+         * @var  $structure Structure
+         */
+        foreach ($structures as $structure) {
+            if ($structure->getStructureUpgrade() === null) {
+                return;
+            }
+            $currentDate = new \DateTime();
+            if ($currentDate < $structure->getStructureUpgrade()->getFinishesOn()) {
+                return;
+            }
+            $this->levelUpStructure($structure, $doctrine->getManager());
+            $this->removeUpgradeEntry($structure->getStructureUpgrade(), $doctrine->getManager());
+        }
     }
+
+    private function calculateUpgradeTime($time, $level)
+    {
+        $interval = ($time + $level) * 10;
+        $completeTime = new \DateTime();
+        $completeTime = $completeTime->add(\DateInterval::createFromDateString($interval . ' seconds'));
+        return $completeTime;
+    }
+
     /**
      * @param $upgradeStructure Structure
      * @param $doctrine Registry
      * @return bool
      */
-    public function beginUpgrade($upgradeStructure,$doctrine)
+    public function beginUpgrade($upgradeStructure, $doctrine)
     {
-        if($upgradeStructure->getStructureUpgrade()!==null){
+        if ($upgradeStructure->getStructureUpgrade() !== null) {
             return false;
         }
-        $upgradeEntry=new StructureUpgrade();
-        $upgradeEntry->setFinishesOn(new \DateTime());
+        $level = $upgradeStructure->getLevel();
+        $time = $upgradeStructure->getStructureName()->getTime();
+        $upgradeEntry = new StructureUpgrade();
+        $upgradeEntry->setFinishesOn($this->calculateUpgradeTime($time, $level));
         $upgradeEntry->setStructure($upgradeStructure);
-        $em=$doctrine->getManager();
+        $em = $doctrine->getManager();
         $em->persist($upgradeEntry);
         $em->flush();
         return true;
     }
+
     /**
      * @param $structures Structure
      * @param $user User
      * @return array
      */
-    public function prepareStructureViewModel($structures,$user)
+    public function prepareStructureViewModel($structures, $user)
     {
         $resultViewArray = [];
         foreach ($structures as $structure) {
@@ -63,6 +85,10 @@ class StructureHelperService implements StructureHelperServiceInterface
              * @var $structureCost StructureCost
              */
             $tempViewObject = new StructureViewModel();
+            $upgrade = $structure->getStructureUpgrade();
+            if ($upgrade !== null) {
+                $tempViewObject->setUpgradeTime($upgrade->getFinishesOn());
+            }
             $tempViewObject->setName($structure->getStructureName()->getName());
             $tempViewObject->setId($structure->getId());
             $tempViewObject->setUsername($user->getUsername());
@@ -80,6 +106,7 @@ class StructureHelperService implements StructureHelperServiceInterface
         return $resultViewArray;
 
     }
+
     /**
      * @param $doctrine Registry
      * @param $id
@@ -139,7 +166,7 @@ class StructureHelperService implements StructureHelperServiceInterface
      * @param $structure Structure
      * @var $resource StructureCost
      */
-    public function allocateUpgradeResources( $baseId, $structure,$doctrine)
+    public function allocateUpgradeResources($baseId, $structure, $doctrine)
     {
         $upgradeCost = $structure->getStructureName()->getStructureCost();
         $currentLevel = $structure->getLevel();
@@ -160,10 +187,20 @@ class StructureHelperService implements StructureHelperServiceInterface
      * @param $em EntityManager
      * @param $structure Structure
      */
-    private function levelUpStructure($structure,$em)
+    private function levelUpStructure($structure, $em)
     {
-        $structure->setLevel($structure->getLevel()+1);
+        $structure->setLevel($structure->getLevel() + 1);
         $em->persist($structure);
+        $em->flush();
+    }
+
+    /**
+     * @param $upgrade
+     * @param $em EntityManager
+     */
+    private function removeUpgradeEntry($upgrade, $em)
+    {
+        $em->remove($upgrade);
         $em->flush();
     }
 }

@@ -53,6 +53,8 @@ class UserController extends BaseHelperController
     public function loggedAction()
     {
         $this->getBaseAction();
+        $base=$this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
+        $this->get('services')->getStructureHelper()->structureUpgradeStatus($base->getStructures(),$this->getDoctrine());
         return $this->redirectToRoute("game_index");
     }
 }
