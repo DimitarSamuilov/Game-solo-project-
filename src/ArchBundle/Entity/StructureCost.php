@@ -28,6 +28,7 @@ class StructureCost
      */
     private $amount;
 
+    
     /**
      * @var StructureName
      * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\StructureName",inversedBy="structureCost")

@@ -11,7 +11,14 @@ namespace ArchBundle\Services\Structure;
 
 interface StructureHelperServiceInterface
 {
-    public function setUpgrade($doctrine, $id);
+    public function haveResources($doctrine, $id);
 
-    public function allocateUpgradeResources($doctrine,$baseId,$structureId);
+    public function allocateUpgradeResources($baseId, $structure, $doctrine);
+
+    public function prepareStructureViewModel($structures, $user);
+
+    public function beginUpgrade($upgradeStructure, $doctrine);
+
+    public function structureUpgradeStatus($structure, $doctrine);
+
 }

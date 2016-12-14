@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="209ca460-a724-4164-84cb-4c36debcf3c9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/StructureController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Controller/BaseHelperController.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/BaseHelperController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Controller/HomepageController.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/HomepageController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/StructureCost.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/StructureCost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperServiceInterface.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperServiceInterface.php" />
     </list>
     <ignored path="TheGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,58 +28,7 @@
     <favorites_list name="TheGame" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StructureUpgrade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/StructureUpgrade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseHelperController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/BaseHelperController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="44" column="93" selection-start-line="44" selection-start-column="93" selection-end-line="44" selection-end-column="93" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Structure.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/Structure.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UnitProduction.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/UnitProduction.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1564">
-              <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StructureHelperService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,17 +36,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/UserController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base/view.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base/partials/resources.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Base/StructureHelperServiceInterface.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Base/BaseGenerationService.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base/partials/basesSelect.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base/partials/activeBase.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Base/StructureHelperService.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperServiceInterface.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Units/UnitHelperServiceInterface.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureCost.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/ResourceName.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitCost.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Form/UserEditType.php" />
@@ -127,12 +76,17 @@
         <option value="$PROJECT_DIR$/src/ArchBundle/Form/ProduceUnitType.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base/viewStructures.html.twig" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitProduction.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/Structure.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureUpgrade.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/BaseHelperController.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/StructureServiceController.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/HomepageController.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureCost.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureUpgrade.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/StructureController.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperServiceInterface.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php" />
       </list>
     </option>
   </component>
@@ -290,28 +244,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Repository" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ArchBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Entity" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -335,32 +267,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ArchBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -402,8 +308,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -417,18 +323,18 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\TheGame\src\ArchBundle\Form" />
+      <recent name="C:\TheGame\app\Resources\views\admin" />
+      <recent name="C:\TheGame\src\ArchBundle\Controller\Admin" />
+      <recent name="C:\TheGame\web\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\TheGame\src\ArchBundle\Models\Utility" />
       <recent name="C:\TheGame\src\ArchBundle\Services\Structure" />
       <recent name="C:\TheGame\src\ArchBundle\Entity" />
       <recent name="C:\TheGame\src\ArchBundle\Services\Base" />
       <recent name="C:\TheGame\web\js" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\TheGame\src\ArchBundle\Form" />
-      <recent name="C:\TheGame\app\Resources\views\admin" />
-      <recent name="C:\TheGame\src\ArchBundle\Controller\Admin" />
-      <recent name="C:\TheGame\web\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -534,7 +440,8 @@
       <workItem from="1481642385451" duration="4735000" />
       <workItem from="1481653440386" duration="8216000" />
       <workItem from="1481664059407" duration="41000" />
-      <workItem from="1481664624285" duration="13000" />
+      <workItem from="1481664624285" duration="266000" />
+      <workItem from="1481710312501" duration="2939000" />
     </task>
     <task id="LOCAL-00001" summary="Basic fights &#10;">
       <created>1481660618517</created>
@@ -564,17 +471,24 @@
       <option name="project" value="LOCAL" />
       <updated>1481664086797</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Rework Building upgrade">
+      <created>1481664661020</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1481664661020</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174167000" />
+    <option name="totallyTimeSpent" value="177359000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19253294" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19253294" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -607,34 +521,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic fights &#10;" />
-    <MESSAGE value="Rework Building upgrade" />
     <MESSAGE value="Rework Building upgrade -step1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework Building upgrade -step1" />
+    <MESSAGE value="Rework Building upgrade" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rework Building upgrade" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Form/UnitFormType.php" />
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Form/UserType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Form/UnitAttackFormType.php" />
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Models/Utility/AttackFormHelper.php" />
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Base/BaseGenerationService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="717">
-          <caret line="130" column="5" selection-start-line="118" selection-start-column="4" selection-end-line="130" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Form/AttackerUnitsFormType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -755,6 +652,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+          <folding>
+            <element signature="e#37#85#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -769,6 +669,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="59" column="77" selection-start-line="59" selection-start-column="77" selection-end-line="59" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -805,11 +706,11 @@
         <state relative-caret-position="124">
           <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
           <folding>
-            <element signature="e#42#69#0#PHP" expanded="true" />
-            <element signature="e#730#757#0#PHP" expanded="true" />
-            <element signature="e#1703#1731#0#PHP" expanded="true" />
-            <element signature="e#2198#2213#1#PHP" expanded="true" />
-            <element signature="e#2255#2283#0#PHP" expanded="true" />
+            <element signature="e#42#69#0#PHP" expanded="false" />
+            <element signature="e#730#757#0#PHP" expanded="false" />
+            <element signature="e#1703#1731#0#PHP" expanded="false" />
+            <element signature="e#2198#2213#1#PHP" expanded="false" />
+            <element signature="e#2255#2283#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -828,13 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Base/BaseGenerationInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -849,24 +743,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
-          <folding>
-            <element signature="e#41#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/StructureProcess.php" />
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/StructureCost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/UnitsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -878,6 +755,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="138" column="20" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -885,6 +763,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
           <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -923,17 +802,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php">
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/BaseHelperController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="394">
+          <caret line="44" column="93" selection-start-line="44" selection-start-column="93" selection-end-line="44" selection-end-column="93" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/Structure.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
+        <state relative-caret-position="547">
           <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
           <folding />
         </state>
@@ -941,25 +820,96 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/UnitProduction.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
+        <state relative-caret-position="1516">
           <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Base/BaseGenerationInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/StructureServiceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/HomepageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+          <folding>
+            <element signature="e#41#68#0#PHP" expanded="true" />
+            <element signature="e#1349#1366#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/StructureCost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-62">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/StructureUpgrade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+        <state relative-caret-position="-238">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/BaseHelperController.php">
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="44" column="93" selection-start-line="44" selection-start-column="93" selection-end-line="44" selection-end-column="93" />
+        <state relative-caret-position="371">
+          <caret line="116" column="46" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperServiceInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/StructureController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="40" column="54" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="54" />
+          <folding>
+            <element signature="e#41#68#0#PHP" expanded="true" />
+            <element signature="e#1052#1083#0#PHP" expanded="true" />
+            <element signature="e#1862#1878#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
