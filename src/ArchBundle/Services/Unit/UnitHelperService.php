@@ -16,7 +16,6 @@ use ArchBundle\Entity\UnitName;
 use ArchBundle\Entity\UnitProduction;
 use ArchBundle\Models\ViewModel\UnitViewModel;
 use Doctrine\Bundle\DoctrineBundle\Registry;
-use Doctrine\ORM\EntityManager;
 
 class UnitHelperService implements UnitHelperInterface
 {
@@ -32,8 +31,8 @@ class UnitHelperService implements UnitHelperInterface
              * @var $unit Unit
              */
             $tempViewObject = new UnitViewModel();
-            if($unit->getUnitProduction()!==null){
-                $finishTime=$unit->getUnitProduction()->getFinishesOn();
+            if ($unit->getUnitProduction() !== null) {
+                $finishTime = $unit->getUnitProduction()->getFinishesOn();
                 $tempViewObject->setProductionTime($finishTime);
                 $tempViewObject->setProductionAmount($unit->getUnitProduction()->getAmount());
             }
@@ -73,33 +72,17 @@ class UnitHelperService implements UnitHelperInterface
             if ($currentDate < $unit->getUnitProduction()->getFinishesOn()) {
                 continue;
             }
-            $this->addProducedUnits($unit, $doctrine->getManager());
-            $this->clearProductionEntity($unit, $doctrine->getManager());
+
+            $em = $doctrine->getManager();
+            $currentUnits = $unit->getCount();
+            $producedUnits = $unit->getUnitProduction()->getAmount();
+            $unit->setCount($currentUnits + $producedUnits);
+            $unitProduction = $unit->getUnitProduction();
+            $em->remove($unitProduction);
+            $unit->setUnitProduction(null);
+            $em->persist($unit);
+            $em->flush();
         }
-    }
-
-    /**
-     * @param $unit Unit
-     * @param $em EntityManager
-     */
-    private function clearProductionEntity($unit, $em)
-    {
-        $unitProduction = $unit->getUnitProduction();
-        $em->remove($unitProduction);
-        $em->flush();
-    }
-
-    /**
-     * @param $unit Unit
-     * @param $em EntityManager
-     */
-    private function addProducedUnits($unit, $em)
-    {
-        $currentUnits = $unit->getCount();
-        $producedUnits = $unit->getUnitProduction()->getAmount();
-        $unit->setCount($currentUnits + $producedUnits);
-        $em->persist($unit);
-        $em->flush();
     }
 
     /**

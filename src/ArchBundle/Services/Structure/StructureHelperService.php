@@ -4,13 +4,13 @@ namespace ArchBundle\Services\Structure;
 
 
 use ArchBundle\Entity\Base;
+use ArchBundle\Entity\BaseResource;
 use ArchBundle\Entity\Structure;
 use ArchBundle\Entity\StructureCost;
 use ArchBundle\Entity\StructureUpgrade;
 use ArchBundle\Entity\User;
 use ArchBundle\Models\ViewModel\StructureViewModel;
 use Doctrine\Bundle\DoctrineBundle\Registry;
-use Doctrine\ORM\EntityManager;
 
 
 /**
@@ -23,12 +23,10 @@ class StructureHelperService implements StructureHelperServiceInterface
     /**
      * @param $baseId
      * @param $doctrine Registry
-     * @return mixed
      */
     public function structureUpgradeProcessing($baseId, $doctrine)
     {
-        $result =false;
-        $structures=$doctrine->getRepository(Base::class)->find($baseId)->getStructures();
+        $structures = $doctrine->getRepository(Base::class)->find($baseId)->getStructures();
         /**
          * @var  $structure Structure
          */
@@ -40,33 +38,21 @@ class StructureHelperService implements StructureHelperServiceInterface
             if ($currentDate < $structure->getStructureUpgrade()->getFinishesOn()) {
                 continue;
             }
-            $em=$doctrine->getManager();
+            $structureUpgrade = $structure->getStructureUpgrade();
+            $em = $doctrine->getManager();
             $structure->setLevel($structure->getLevel() + 1);
+            $em->remove($structureUpgrade);
+            $structure->setStructureUpgrade(null);
             $em->persist($structure);
             $em->flush();
-
         }
     }
 
     /**
-     * @param $em EntityManager
-     * @param $structure Structure
+     * @param $time
+     * @param $level
+     * @return \DateTime
      */
-    private function levelUpStructure($structure, $em)
-    {
-
-    }
-
-
-    /**
-     * @param $upgrades array
-     * @param $em EntityManager
-     */
-    private function clearUpgradeEntry($upgrades, $em)
-    {
-
-
-    }
     private function calculateUpgradeTime($time, $level)
     {
         $interval = ($time + $level) * 10;
@@ -90,6 +76,7 @@ class StructureHelperService implements StructureHelperServiceInterface
         $upgradeEntry = new StructureUpgrade();
         $upgradeEntry->setFinishesOn($this->calculateUpgradeTime($time, $level));
         $upgradeEntry->setStructure($upgradeStructure);
+        $upgradeStructure->setStructureUpgrade($upgradeEntry);
         $em = $doctrine->getManager();
         $em->persist($upgradeEntry);
         $em->flush();
@@ -161,10 +148,17 @@ class StructureHelperService implements StructureHelperServiceInterface
         return $count >= sizeof($neededResources);
     }
 
-
+    /**
+     * @param $upgradeCost
+     * @param $level
+     * @return array
+     */
     private function findNeededResources($upgradeCost, $level)
     {
         $neededResources = [];
+        /**
+         * @var $upgrade StructureCost
+         */
         foreach ($upgradeCost as $upgrade) {
             $neededResources[$upgrade->getResource()->getName()] = ($upgrade->getAmount() * ($level + 1));
         }
@@ -178,6 +172,9 @@ class StructureHelperService implements StructureHelperServiceInterface
     private function getAvailableResources($baseResources)
     {
         $availableResources = [];
+        /**
+         * @var  $resource BaseResource
+         */
         foreach ($baseResources as $resource) {
             $availableResources[$resource->getResourceName()->getName()] = $resource->getAmount();
         }
@@ -198,6 +195,9 @@ class StructureHelperService implements StructureHelperServiceInterface
         $neededResourcesArray = $this->findNeededResources($upgradeCost, $currentLevel);
         $baseResources = $doctrine->getRepository(Base::class)->find($baseId)->getResources();
         $em = $doctrine->getManager();
+        /**
+         * @var  $resource BaseResource
+         */
         foreach ($baseResources as $resource) {
             $tempResource = $resource->getAmount();
             $tempResource -= $neededResourcesArray[$resource->getResourceName()->getName()];

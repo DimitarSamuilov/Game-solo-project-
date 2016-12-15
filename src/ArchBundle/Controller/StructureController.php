@@ -6,7 +6,6 @@ use ArchBundle\Entity\Base;
 use ArchBundle\Entity\Structure;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -27,7 +26,7 @@ class StructureController extends BaseHelperController
 
         $service = $this->get('services')->getStructureHelper();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        // $service->structureUpgradeProcessing($this->getBaseAction(), $this->getDoctrine());
+        $service->structureUpgradeProcessing($this->getBaseAction(), $this->getDoctrine());
         $structures = $base->getStructures();
         $viewArray = $service->prepareStructureViewModel($structures, $this->getUser());
         return $this->render("base/viewStructures.html.twig", ['structures' => $viewArray]);
@@ -55,6 +54,6 @@ class StructureController extends BaseHelperController
      */
     public function test()
     {
-        $this->get('services')->getStructureHelper()->structureUpgradeProcessing($this->getBaseAction(),$this->getDoctrine());
+        $this->get('services')->getStructureHelper()->structureUpgradeProcessing($this->getBaseAction(), $this->getDoctrine());
     }
 }
