@@ -1,4 +1,3 @@
-
 {% extends 'base.html.twig' %}
 
 {% block main %}
@@ -21,7 +20,11 @@
                             <td>{{ base.id }}--[{{ base.x }}:{{ base.y }} ]</td>
                             <td>{{ base.userUsername }}</td>
                             <td>{{ base.time }}</td>
-                            <td><a href="{{ path("fight_attack_menu",{id:base.id}) }}">Attack</a></td>
+                            {% if base.isAttacking %}
+                                <td>Attack In progress ---- set timer</td>
+                            {% else %}
+                                <td><a href="{{ path("fight_attack_menu",{id:base.id}) }}">Attack</a></td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -11,12 +11,30 @@ namespace ArchBundle\Models\ViewModel;
 
 class PlayerBaseModel
 {
-    private $Id;
+    private $id;
     private $userUsername;
     private $userId;
     private $x;
     private $y;
     private $time;
+    private $isAttacking;
+
+    /**
+     * @return mixed
+     */
+    public function getIsAttacking()
+    {
+        return $this->isAttacking;
+    }
+
+    /**
+     * @param mixed $isAttacking
+     */
+    public function setIsAttacking($isAttacking)
+    {
+        $this->isAttacking = $isAttacking;
+    }
+
 
     /**
      * @return mixed
@@ -40,15 +58,15 @@ class PlayerBaseModel
      */
     public function getId()
     {
-        return $this->Id;
+        return $this->id;
     }
 
     /**
-     * @param mixed $Id
+     * @param mixed $id
      */
-    public function setId($Id)
+    public function setId($id)
     {
-        $this->Id = $Id;
+        $this->id = $id;
     }
 
     /**

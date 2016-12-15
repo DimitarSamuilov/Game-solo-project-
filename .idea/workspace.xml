@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="209ca460-a724-4164-84cb-4c36debcf3c9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/BattleUnit.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ArchBundle/Repository/BattleUnitRepository.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/fight/userBases.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/fight/userBases.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/Base.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/Base.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/PlayerBaseModel.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/PlayerBaseModel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightServiceInterface.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightServiceInterface.php" />
     </list>
@@ -29,18 +34,60 @@
       <file leaf-file-name="FightService.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+            <state relative-caret-position="309">
+              <caret line="289" column="82" selection-start-line="289" selection-start-column="82" selection-end-line="289" selection-end-column="82" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightServiceInterface.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightServiceInterface.php">
+      <file leaf-file-name="PlayerBaseModel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/PlayerBaseModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+            <state relative-caret-position="272">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userBases.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/fight/userBases.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Battle.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/Battle.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="120" column="12" selection-start-line="120" selection-start-column="11" selection-end-line="120" selection-end-column="12" />
+              <folding>
+                <element signature="e#37#85#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Base.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/Base.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnitName.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -49,18 +96,28 @@
       <file leaf-file-name="BattleUnit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/BattleUnit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="138" column="20" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+            <state relative-caret-position="280">
+              <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FightServiceInterface.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightServiceInterface.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FightsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="377">
+              <caret line="35" column="15" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -74,10 +131,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/ResourceName.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitCost.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Form/UserEditType.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/PlayerBaseModel.php" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/ServiceHolder.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Models/Utility/FightingUnits.php" />
@@ -89,7 +144,6 @@
         <option value="$PROJECT_DIR$/src/ArchBundle/Models/Utility/AttackFormHelper.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/fight/attackMenu.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Form/AttackerUnitsFormType.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/BattleUnit.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Form/AttackFormType.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Form/ProduceUnitType.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/BaseHelperController.php" />
@@ -98,9 +152,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/base/viewStructures.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureCost.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureName.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/fight/userBases.html.twig" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/Base.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperServiceInterface.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/units/produce.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperInterface.php" />
@@ -122,9 +173,15 @@
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/user/register.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/Base.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/Battle.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/BattleUnit.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightServiceInterface.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/PlayerBaseModel.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/fight/userBases.html.twig" />
       </list>
     </option>
   </component>
@@ -284,7 +341,69 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheGame" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheGame" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheGame" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fight" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -426,7 +545,7 @@
       <workItem from="1481750761770" duration="2318000" />
       <workItem from="1481782792673" duration="5116000" />
       <workItem from="1481790561865" duration="1407000" />
-      <workItem from="1481805129158" duration="1082000" />
+      <workItem from="1481805129158" duration="9534000" />
     </task>
     <task id="LOCAL-00001" summary="Basic fights &#10;">
       <created>1481660618517</created>
@@ -512,11 +631,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481790871595</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Before fightRework&#10;">
+      <created>1481806234940</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1481806234940</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="216844000" />
+    <option name="totallyTimeSpent" value="225296000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -563,7 +689,8 @@
     <MESSAGE value="Found Entity Problem --- needs fix&#10;" />
     <MESSAGE value="Unit production and Structure upgrade fixed" />
     <MESSAGE value="Progress before Timed fights" />
-    <option name="LAST_COMMIT_MESSAGE" value="Progress before Timed fights" />
+    <MESSAGE value="Before fightRework&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Before fightRework&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -572,20 +699,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Form/UserEditType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Form/AttackFormType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Form/ProduceUnitType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -627,13 +740,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/PlayerBaseModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1425">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -648,6 +755,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
           <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -655,6 +763,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -662,13 +771,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/fight/userBases.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -676,20 +779,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -714,17 +804,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Base/BaseGenerationService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -753,6 +837,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -781,6 +866,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -788,6 +874,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -795,6 +882,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
           <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -809,6 +897,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -823,6 +912,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -830,6 +920,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#41#68#0#PHP" expanded="false" />
+            <element signature="e#1366#1391#0#PHP" expanded="false" />
+            <element signature="e#1585#1597#1#PHP" expanded="false" />
+            <element signature="e#1908#1933#0#PHP" expanded="false" />
+            <element signature="e#3349#3374#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -865,6 +962,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -872,6 +970,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-306">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -879,6 +978,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -886,37 +986,96 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
           <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightServiceInterface.php">
+    <entry file="file://$USER_HOME$/Desktop/New folder/BattleUnit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+        <state relative-caret-position="476">
+          <caret line="49" column="26" selection-start-line="37" selection-start-column="4" selection-end-line="49" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Base/BaseGenerationService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/BattleUnit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="138" column="20" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+        <state relative-caret-position="280">
+          <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php">
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/Base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+        <state relative-caret-position="323">
+          <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/Battle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="120" column="12" selection-start-line="120" selection-start-column="11" selection-end-line="120" selection-end-column="12" />
+          <folding>
+            <element signature="e#37#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightServiceInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="377">
+          <caret line="35" column="15" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/PlayerBaseModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="289" column="82" selection-start-line="289" selection-start-column="82" selection-end-line="289" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/fight/userBases.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
           <folding />
         </state>
       </provider>

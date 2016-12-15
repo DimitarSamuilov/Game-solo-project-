@@ -64,23 +64,23 @@ class Base
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\BattleUnit",mappedBy="attackerBase")
+     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\Battle",mappedBy="attackerBase")
      */
-    private $battleUnits;
+    private $battle;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\BattleUnit",mappedBy="defenderBase")
+     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\Battle",mappedBy="defenderBase")
      */
-    private $battleUnitsDefense;
+    private $battleDefense;
 
     /**
      * Base constructor.
      */
     public function __construct()
     {
-        $this->battleUnitsDefense = new ArrayCollection();
-        $this->battleUnits = new ArrayCollection();
+        $this->battleDefense = new ArrayCollection();
+        $this->battle = new ArrayCollection();
         $this->structures = new ArrayCollection();
         $this->resources = new ArrayCollection();
         $this->units = new ArrayCollection();
@@ -89,34 +89,36 @@ class Base
     /**
      * @return ArrayCollection
      */
-    public function getBattleUnitsDefense(): ArrayCollection
+    public function getBattle()
     {
-        return $this->battleUnitsDefense;
+        return $this->battle;
     }
 
     /**
-     * @param ArrayCollection $battleUnitsDefense
+     * @param ArrayCollection $battle
      */
-    public function setBattleUnitsDefense(ArrayCollection $battleUnitsDefense)
+    public function setBattle($battle)
     {
-        $this->battleUnitsDefense = $battleUnitsDefense;
+        $this->battle = $battle;
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getBattleUnits()
+    public function getBattleDefense()
     {
-        return $this->battleUnits;
+        return $this->battleDefense;
     }
 
     /**
-     * @param ArrayCollection $battleUnits
+     * @param ArrayCollection $battleDefense
      */
-    public function setBattleUnits($battleUnits)
+    public function setBattleDefense($battleDefense)
     {
-        $this->battleUnits = $battleUnits;
+        $this->battleDefense = $battleDefense;
     }
+
+
 
 
     /**

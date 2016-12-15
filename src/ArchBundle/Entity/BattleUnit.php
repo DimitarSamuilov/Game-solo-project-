@@ -29,33 +29,35 @@ class BattleUnit
     private $count;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="arrivesOn", type="datetime")
-     */
-    private $arrivesOn;
-
-    /**
-     * @var Base
-     * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\Base",inversedBy="battleUnits")
-     * @ORM\JoinTable(name="attack_base_id")
-     */
-    private $attackerBase;
-
-    /**
-     * @var Base
-     * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\Base",inversedBy="battleUnitsDefense")
-     * @ORM\JoinTable(name="defend_base_id")
-     */
-    private $defenderBase;
-
-    /**
      * @var UnitName
-     *
      * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\UnitName",inversedBy="battleUnits")
      * @ORM\JoinTable(name="unit_name_id")
      */
     private $unitName;
+
+    /**
+     * @var Battle
+     * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\Battle",inversedBy="battleUnits")
+     * @ORM\JoinTable(name="battle_id")
+     */
+    private $battle;
+
+    /**
+     * @return Battle
+     */
+    public function getBattle(): Battle
+    {
+        return $this->battle;
+    }
+
+    /**
+     * @param Battle $battle
+     */
+    public function setBattle(Battle $battle)
+    {
+        $this->battle = $battle;
+    }
+
 
     /**
      * @return UnitName
@@ -68,44 +70,10 @@ class BattleUnit
     /**
      * @param UnitName $unitName
      */
-    public function setUnitName($unitName)
+    public function setUnitName( $unitName)
     {
         $this->unitName = $unitName;
     }
-
-
-    /**
-     * @return Base
-     */
-    public function getAttackerBase()
-    {
-        return $this->attackerBase;
-    }
-
-    /**
-     * @param Base $attackerBase
-     */
-    public function setAttackerBase( $attackerBase)
-    {
-        $this->attackerBase = $attackerBase;
-    }
-
-    /**
-     * @return Base
-     */
-    public function getDefenderBase()
-    {
-        return $this->defenderBase;
-    }
-
-    /**
-     * @param Base $defenderBase
-     */
-    public function setDefenderBase( $defenderBase)
-    {
-        $this->defenderBase = $defenderBase;
-    }
-
 
     /**
      * Get id
@@ -139,30 +107,6 @@ class BattleUnit
     public function getCount()
     {
         return $this->count;
-    }
-
-    /**
-     * Set arrivesOn
-     *
-     * @param \DateTime $arrivesOn
-     *
-     * @return BattleUnit
-     */
-    public function setArrivesOn($arrivesOn)
-    {
-        $this->arrivesOn = $arrivesOn;
-
-        return $this;
-    }
-
-    /**
-     * Get arrivesOn
-     *
-     * @return \DateTime
-     */
-    public function getArrivesOn()
-    {
-        return $this->arrivesOn;
     }
 }
 
