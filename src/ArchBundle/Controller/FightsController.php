@@ -4,9 +4,11 @@ namespace ArchBundle\Controller;
 
 
 use ArchBundle\Entity\Base;
+use ArchBundle\Entity\Battle;
 use ArchBundle\Form\AttackFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class FightsController
@@ -67,5 +69,17 @@ class FightsController extends BaseHelperController
      */
     public function test()
     {
+        $currentBase=$this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
+        $battles=$this->get('services')->getFightService()->getPlayerBattles($currentBase,$this->getDoctrine());
+        /**
+         * @var  $battle Battle
+         */
+        var_dump(new \DateTime(null,new \DateTimeZone('Europe/Sofia')));
+        var_dump(new \DateTime());
+        foreach ($battles as $battle){
+            var_dump($battle->getStartsOn());
+            var_dump(new DateTime());
+            //$this->get('services')->getFightService()->organiseAssault($battle,$this->getDoctrine());
+        }
     }
 }

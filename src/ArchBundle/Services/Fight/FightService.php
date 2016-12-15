@@ -130,7 +130,7 @@ class FightService implements FightServiceInterface
     public function getPlayerBattles($attackerBase,$doctrine)
     {
         $battlesToProcess=[];
-        $currentDate=new \DateTime();
+        $currentDate=new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
         $battleUnits=$doctrine->getRepository(Battle::class)->findBy(['attackerBase'=>$attackerBase,]);
         /**
          * @var $battle Battle
@@ -287,7 +287,7 @@ class FightService implements FightServiceInterface
                     [$base->getX(), $currentBase->getX()],
                     [$base->getY(), $currentBase->getY()]
                 )->format('Y-m-d H:i:s'));
-            $temp->setIsAttacking($this->isAttacked($currentBase,$base,$doctrine));
+            $temp->setBattleTime($this->isAttacked($currentBase,$base,$doctrine));
             $resultArray[] = $temp;
         }
         return $resultArray;
@@ -301,11 +301,11 @@ class FightService implements FightServiceInterface
      */
     private function isAttacked($attackerBase,$defenderBase,$doctrine)
     {
-        $haveBattle=$doctrine->getRepository(Battle::class)->findBy(['attackerBase'=>$attackerBase,'defenderBase'=>$defenderBase]);
+        $haveBattle=$doctrine->getRepository(Battle::class)->findOneBy(['attackerBase'=>$attackerBase,'defenderBase'=>$defenderBase]);
         if($haveBattle===null){
             return false;
         }else{
-            return true;
+            return $haveBattle->getStartsOn()->diff(new \DateTime(null,new \DateTimeZone('Europe/Sofia')))->format("%d days %h hours %i minutes ");
         }
     }
     public function calculateTime($xArr, $yArr)
@@ -314,7 +314,7 @@ class FightService implements FightServiceInterface
         $y = $yArr[0] - $yArr[1];
         $distance = ceil(sqrt(pow($x, 2) + pow($y, 2)));
         $distance *= 10;
-        $attackTime = new \DateTime(null, new \DateTimeZone('Europe/Sofia'));
+        $attackTime = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
         $attackTime = $attackTime->add(\DateInterval::createFromDateString($distance . ' seconds'));
         return $attackTime;
     }

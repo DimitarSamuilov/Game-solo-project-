@@ -17,22 +17,22 @@ class PlayerBaseModel
     private $x;
     private $y;
     private $time;
-    private $isAttacking;
+    private $battleTime;
 
     /**
      * @return mixed
      */
-    public function getIsAttacking()
+    public function getBattleTime()
     {
-        return $this->isAttacking;
+        return $this->battleTime;
     }
 
     /**
-     * @param mixed $isAttacking
+     * @param mixed $battleTime
      */
-    public function setIsAttacking($isAttacking)
+    public function setBattleTime($battleTime)
     {
-        $this->isAttacking = $isAttacking;
+        $this->battleTime = $battleTime;
     }
 
 

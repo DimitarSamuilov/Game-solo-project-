@@ -34,7 +34,7 @@ class StructureHelperService implements StructureHelperServiceInterface
             if ($structure->getStructureUpgrade() === null) {
                 continue;
             }
-            $currentDate = new \DateTime();
+            $currentDate = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
             if ($currentDate < $structure->getStructureUpgrade()->getFinishesOn()) {
                 continue;
             }
@@ -56,7 +56,7 @@ class StructureHelperService implements StructureHelperServiceInterface
     private function calculateUpgradeTime($time, $level)
     {
         $interval = ($time + $level) * 10;
-        $completeTime = new \DateTime();
+        $completeTime = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
         $completeTime = $completeTime->add(\DateInterval::createFromDateString($interval . ' seconds'));
         return $completeTime;
     }

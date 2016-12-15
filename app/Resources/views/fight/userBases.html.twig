@@ -20,10 +20,10 @@
                             <td>{{ base.id }}--[{{ base.x }}:{{ base.y }} ]</td>
                             <td>{{ base.userUsername }}</td>
                             <td>{{ base.time }}</td>
-                            {% if base.isAttacking %}
-                                <td>Attack In progress ---- set timer</td>
-                            {% else %}
+                            {% if base.battleTime==false %}
                                 <td><a href="{{ path("fight_attack_menu",{id:base.id}) }}">Attack</a></td>
+                            {% else %}
+                                <td>{{ base.battleTime }}</td>
                             {% endif %}
                         </tr>
                     {% endfor %}
