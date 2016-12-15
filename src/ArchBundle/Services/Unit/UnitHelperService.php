@@ -68,7 +68,7 @@ class UnitHelperService implements UnitHelperInterface
             if ($unit->getUnitProduction() === null) {
                 continue;
             }
-            $currentDate = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
+            $currentDate = new \DateTime();
             if ($currentDate < $unit->getUnitProduction()->getFinishesOn()) {
                 continue;
             }
@@ -134,7 +134,7 @@ class UnitHelperService implements UnitHelperInterface
     public function calculateProductionTime($singleUnitTime, $amount)
     {
         $interval = $singleUnitTime * $amount;
-        $competeTime = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
+        $competeTime = new \DateTime();
         $competeTime = $competeTime->add(\DateInterval::createFromDateString($interval . ' seconds'));
         return $competeTime;
     }

@@ -7,6 +7,7 @@ use ArchBundle\Entity\Structure;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class StructureController
@@ -54,6 +55,10 @@ class StructureController extends BaseHelperController
      */
     public function test()
     {
+        /*$compare=new DateTime('2016 -15-12');
         $this->get('services')->getStructureHelper()->structureUpgradeProcessing($this->getBaseAction(), $this->getDoctrine());
+        var_dump($this->formatCountDownTime($compare));*/
     }
+
+
 }

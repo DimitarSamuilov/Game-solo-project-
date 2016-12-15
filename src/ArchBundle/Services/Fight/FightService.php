@@ -130,7 +130,7 @@ class FightService implements FightServiceInterface
     public function getPlayerBattles($attackerBase,$doctrine)
     {
         $battlesToProcess=[];
-        $currentDate=new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
+        $currentDate=new \DateTime();
         $battleUnits=$doctrine->getRepository(Battle::class)->findBy(['attackerBase'=>$attackerBase,]);
         /**
          * @var $battle Battle
@@ -265,6 +265,7 @@ class FightService implements FightServiceInterface
         return [$attackerPoints > $defenderPoints, $emptyBase];
     }
 
+
     public function getBasesView($bases, $currentBase,$doctrine)
     {
         $resultArray = [];
@@ -283,10 +284,10 @@ class FightService implements FightServiceInterface
             $temp->setX($base->getX());
             $temp->setY($base->getY());
             $temp->setTime(
-                $this->calculateTime(
+                $this->formatCountDownTime($this->calculateTime(
                     [$base->getX(), $currentBase->getX()],
                     [$base->getY(), $currentBase->getY()]
-                )->format('Y-m-d H:i:s'));
+                )));
             $temp->setBattleTime($this->isAttacked($currentBase,$base,$doctrine));
             $resultArray[] = $temp;
         }
@@ -305,18 +306,39 @@ class FightService implements FightServiceInterface
         if($haveBattle===null){
             return false;
         }else{
-            return $haveBattle->getStartsOn()->diff(new \DateTime(null,new \DateTimeZone('Europe/Sofia')))->format("%d days %h hours %i minutes ");
+            return $this->formatCountDownTime($haveBattle->getStartsOn());
         }
     }
+
+    /**
+     * @param $xArr array
+     * @param $yArr array
+     * @return \DateTime
+     */
     public function calculateTime($xArr, $yArr)
     {
         $x = $xArr[0] - $xArr[1];
         $y = $yArr[0] - $yArr[1];
         $distance = ceil(sqrt(pow($x, 2) + pow($y, 2)));
         $distance *= 10;
-        $attackTime = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
+        $attackTime = new \DateTime();
         $attackTime = $attackTime->add(\DateInterval::createFromDateString($distance . ' seconds'));
         return $attackTime;
+    }
+
+
+    private function formatCountDownTime($date)
+    {
+        $currentTime = new \DateTime();
+        $currentTimeStamp = $currentTime->getTimestamp();
+        $compareTimeStamp = $date->getTimestamp();
+        $difference = $compareTimeStamp - $currentTimeStamp;
+        $arr = [];
+        $arr['days'] = floor($difference / 86400);
+        $arr['hours'] = floor(($difference % 86400) / 3600);
+        $arr['minutes'] = floor(($difference % 3600) / 60);
+        $arr['seconds'] = floor($difference % 60);
+        return 'Days:' . $arr['days'] . ' Hours:' . $arr['hours'] . ' Minutes:' . $arr['minutes'] . ' Seconds:' . $arr['seconds'];
     }
 
     /**

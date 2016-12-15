@@ -19,6 +19,25 @@ class StructureViewModel
     private $id;
     private $username;
     private $upgradeTime;
+    private $requiredTime;
+
+    /**
+     * @return mixed
+     */
+    public function getRequiredTime()
+    {
+        return $this->requiredTime;
+    }
+
+    /**
+     * @param mixed $requiredTime
+     */
+    public function setRequiredTime($requiredTime)
+    {
+        $this->requiredTime = $requiredTime;
+    }
+
+
 
 
     /**
@@ -34,7 +53,7 @@ class StructureViewModel
      */
     public function setUpgradeTime($upgradeTime)
     {
-        $this->upgradeTime = $upgradeTime->format('Y-m-d H:i:s');
+        $this->upgradeTime = $upgradeTime;
         //$this->upgradeTime = $upgradeTime->diff(new \DateTime())->format("%d days %h hours %i minutes ");
     }
     /**

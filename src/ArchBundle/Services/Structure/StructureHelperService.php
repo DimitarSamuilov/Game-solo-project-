@@ -19,7 +19,6 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
  */
 class StructureHelperService implements StructureHelperServiceInterface
 {
-
     /**
      * @param $baseId
      * @param $doctrine Registry
@@ -34,7 +33,7 @@ class StructureHelperService implements StructureHelperServiceInterface
             if ($structure->getStructureUpgrade() === null) {
                 continue;
             }
-            $currentDate = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
+            $currentDate = new \DateTime();
             if ($currentDate < $structure->getStructureUpgrade()->getFinishesOn()) {
                 continue;
             }
@@ -56,7 +55,7 @@ class StructureHelperService implements StructureHelperServiceInterface
     private function calculateUpgradeTime($time, $level)
     {
         $interval = ($time + $level) * 10;
-        $completeTime = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
+        $completeTime = new \DateTime();
         $completeTime = $completeTime->add(\DateInterval::createFromDateString($interval . ' seconds'));
         return $completeTime;
     }
@@ -99,8 +98,15 @@ class StructureHelperService implements StructureHelperServiceInterface
             $tempViewObject = new StructureViewModel();
             $upgrade = $structure->getStructureUpgrade();
             if ($upgrade !== null) {
-                $tempViewObject->setUpgradeTime($upgrade->getFinishesOn());
+                $tempViewObject
+                    ->setUpgradeTime(
+                    /*rework*/
+                        $this->formatCountDownTime($upgrade->getFinishesOn())
+                    );
             }
+            $tempViewObject->setRequiredTime(
+                $this->calculateUpgradeTime(
+                    $structure->getStructureName()->getTime(), $structure->getLevel()));
             $tempViewObject->setName($structure->getStructureName()->getName());
             $tempViewObject->setId($structure->getId());
             $tempViewObject->setUsername($user->getUsername());
@@ -117,6 +123,20 @@ class StructureHelperService implements StructureHelperServiceInterface
 
         return $resultViewArray;
 
+    }
+
+    private function formatCountDownTime($date)
+    {
+        $currentTime = new \DateTime();
+        $currentTimeStamp = $currentTime->getTimestamp();
+        $compareTimeStamp = $date->getTimestamp();
+        $difference = $compareTimeStamp - $currentTimeStamp;
+        $arr = [];
+        $arr['days'] = floor($difference / 86400);
+        $arr['hours'] = floor(($difference % 86400) / 3600);
+        $arr['minutes'] = floor(($difference % 3600) / 60);
+        $arr['seconds'] = floor($difference % 60);
+        return 'Days:' . $arr['days'] . ' Hours:' . $arr['hours'] . ' Minutes:' . $arr['minutes'] . ' Seconds:' . $arr['seconds'];
     }
 
     /**

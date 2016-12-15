@@ -49,7 +49,8 @@ class UnitViewModel
      */
     public function setProductionTime($productionTime)
     {
-        $this->productionTime = $productionTime->format('Y-m-d H:i:s');
+        //$this->productionTime = $productionTime->format('Y-m-d H:i:s');
+        $this->productionTime = $productionTime->diff(new \DateTime())->format("%d days %h hours %i minutes ");
     }
 
 
