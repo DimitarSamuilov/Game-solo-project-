@@ -3,6 +3,7 @@
 namespace ArchBundle\Controller;
 
 use ArchBundle\Entity\Base;
+use ArchBundle\Entity\BattleLog;
 use ArchBundle\Entity\Role;
 use ArchBundle\Entity\User;
 use ArchBundle\Form\UserType;
@@ -90,7 +91,8 @@ class UserController extends BaseHelperController
      */
     public function profilePageAction()
     {
+        $battleLogs=$this->getDoctrine()->getRepository(BattleLog::class)->findBy(['user'=>$this->getUser()]);
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        return $this->render('/user/profile.html.twig', ['base' => $base]);
+        return $this->render('/user/profile.html.twig', ['base' => $base,'battleLogs'=>$battleLogs]);
     }
 }

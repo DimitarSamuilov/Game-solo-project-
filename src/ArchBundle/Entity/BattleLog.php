@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BattleLog
  *
- * @ORM\Table(name="battle_log")
+ * @ORM\Table(name="battle_logs")
  * @ORM\Entity(repositoryClass="ArchBundle\Repository\BattleLogRepository")
  */
 class BattleLog
@@ -34,6 +34,41 @@ class BattleLog
      * @ORM\Column(name="time", type="datetime")
      */
     private $time;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\User",inversedBy="battleLogs")
+     * @ORM\JoinTable(name="user_id")
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->setTime(new \DateTime());
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
 
 
     /**
@@ -92,6 +127,30 @@ class BattleLog
     public function getTime()
     {
         return $this->time;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return BattleLog
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }
 

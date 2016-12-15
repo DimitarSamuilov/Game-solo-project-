@@ -10,6 +10,7 @@ namespace ArchBundle\Services\Fight;
 
 use ArchBundle\Entity\Base;
 use ArchBundle\Entity\Battle;
+use ArchBundle\Entity\BattleLog;
 use ArchBundle\Entity\BattleUnit;
 use ArchBundle\Entity\Unit;
 use ArchBundle\Entity\UnitName;
@@ -24,7 +25,32 @@ class FightService implements FightServiceInterface
     const MAX_ARMY_RETURN = 4;
 
 
+    /**
+     * @param $battle Battle
+     * @param $battleTime \DateTime
+     * @param $doctrine Registry
+     */
+    private function generateBattleLog($battle,$battleTime,$doctrine)
+    {
+        $userBase=$battle->getDefenderBase();
+        $attackerBase=$battle->getAttackerBase();
+        $attacker=$attackerBase->getUser();
+        $user=$userBase->getUser();
+        $battleLog=new BattleLog();
+        $battleLog->setTitle('Battle warning!!');
+        $message=
+            'Player '.$attacker->getUsername().
+            ' is attacking you!!!He will be at you base .['.
+            $userBase->getX().':'.$userBase->getY().'] at '.$battleTime->format('F j, Y, g:i a');
+        $battleLog->setContent($message);
+        $battleLog->setUser($user);
+        $em=$doctrine->getManager();
+        $em->persist($battleLog);
+        $user->addBattleLog($battleLog);
+        $em->persist($user);
+        $em->flush();
 
+    }
     /**
      * @param $attackerBase Base
      * @param $defenderBase Base
@@ -53,6 +79,7 @@ class FightService implements FightServiceInterface
         $em->flush();
 
         $this->subtractAttackerUnits($attackerBase, $army, $before, $doctrine);
+        $this->generateBattleLog($battle,$battleTime,$doctrine);
     }
 
     /**
@@ -90,7 +117,7 @@ class FightService implements FightServiceInterface
      */
     public function sendArmy($attackerBase, $defenderBase, $armyArr, $before, $doctrine)
     {
-        //$battleUnits->setArrivesOn(new \DateTime());
+
         $em = $doctrine->getEntityManager();
         $unitNames = $doctrine->getRepository(UnitName::class)->findAll();
         foreach ($unitNames as $unit) {
@@ -160,7 +187,7 @@ class FightService implements FightServiceInterface
             }
             echo 'base Destroyed';
             $this->attackerWins($attackerBase->getUser(), $this->mapAttackerUnits($attackerUnits), $defenderBase, $doctrine);
-            $this->nullifyBattleUnits($battle, $doctrine);
+
         } else {
             echo 'base Survived';
             if ($battleResult[1] != true) {
@@ -168,6 +195,7 @@ class FightService implements FightServiceInterface
             }
             $this->defenderHolds($defenderBase, $doctrine);
         }
+        $this->nullifyBattleUnits($battle, $doctrine);
     }
 
     /**
@@ -266,50 +294,6 @@ class FightService implements FightServiceInterface
     }
 
 
-    public function getBasesView($bases, $currentBase,$doctrine)
-    {
-        $resultArray = [];
-        /**
-         * @var $base Base
-         * @var $currentBase Base
-         */
-        foreach ($bases as $base) {
-            if ($base->getUser()->getId() === $currentBase->getUser()->getId()) {
-                continue;
-            }
-            $temp = new PlayerBaseModel();
-            $temp->setId($base->getId());
-            $temp->setUserId($base->getUser()->getId());
-            $temp->setUserUsername($base->getUser()->getUsername());
-            $temp->setX($base->getX());
-            $temp->setY($base->getY());
-            $temp->setTime(
-                $this->formatCountDownTime($this->calculateTime(
-                    [$base->getX(), $currentBase->getX()],
-                    [$base->getY(), $currentBase->getY()]
-                )));
-            $temp->setBattleTime($this->isAttacked($currentBase,$base,$doctrine));
-            $resultArray[] = $temp;
-        }
-        return $resultArray;
-    }
-
-    /**
-     * @param $attackerBase Base
-     * @param $defenderBase Base
-     * @param $doctrine Registry
-     * @return  bool
-     */
-    private function isAttacked($attackerBase,$defenderBase,$doctrine)
-    {
-        $haveBattle=$doctrine->getRepository(Battle::class)->findOneBy(['attackerBase'=>$attackerBase,'defenderBase'=>$defenderBase]);
-        if($haveBattle===null){
-            return false;
-        }else{
-            return $this->formatCountDownTime($haveBattle->getStartsOn());
-        }
-    }
-
     /**
      * @param $xArr array
      * @param $yArr array
@@ -325,22 +309,6 @@ class FightService implements FightServiceInterface
         $attackTime = $attackTime->add(\DateInterval::createFromDateString($distance . ' seconds'));
         return $attackTime;
     }
-
-
-    private function formatCountDownTime($date)
-    {
-        $currentTime = new \DateTime();
-        $currentTimeStamp = $currentTime->getTimestamp();
-        $compareTimeStamp = $date->getTimestamp();
-        $difference = $compareTimeStamp - $currentTimeStamp;
-        $arr = [];
-        $arr['days'] = floor($difference / 86400);
-        $arr['hours'] = floor(($difference % 86400) / 3600);
-        $arr['minutes'] = floor(($difference % 3600) / 60);
-        $arr['seconds'] = floor($difference % 60);
-        return 'Days:' . $arr['days'] . ' Hours:' . $arr['hours'] . ' Minutes:' . $arr['minutes'] . ' Seconds:' . $arr['seconds'];
-    }
-
     /**
      * @param $army array
      * @return array

@@ -15,8 +15,6 @@ interface StructureHelperServiceInterface
 
     public function allocateUpgradeResources($baseId, $structure, $doctrine);
 
-    public function prepareStructureViewModel($structures, $user);
-
     public function beginUpgrade($upgradeStructure, $doctrine);
 
     public function structureUpgradeProcessing($baseId, $doctrine);

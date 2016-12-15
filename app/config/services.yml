@@ -14,7 +14,9 @@ services:
     app.unit:
             class: ArchBundle\Services\Unit\UnitHelperService
     app.fight:
-                class: ArchBundle\Services\Fight\FightService
+            class: ArchBundle\Services\Fight\FightService
+    app.viewHelper:
+          class: ArchBundle\Services\View\ViewHelper
     services:
-        class: ArchBundle\Services\ServiceHolder
-        arguments: ['@app.base','@app.structure','@app.unit','@app.fight']
+          class: ArchBundle\Services\ServiceHolder
+          arguments: ['@app.viewHelper','@app.base','@app.structure','@app.unit','@app.fight']

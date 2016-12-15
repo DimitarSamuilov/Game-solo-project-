@@ -34,7 +34,7 @@ class FightsController extends BaseHelperController
         $currentBase = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
         return $this->render("fight/userBases.html.twig",
             [
-                'bases' => $this->get('services')->getFightService()->getBasesView($bases, $currentBase, $this->getDoctrine()),
+                'bases' => $this->get('services')->getViewHelper()->getBasesView($bases, $currentBase, $this->getDoctrine()),
                 'currentUserId' => $this->getUser()->getId()
             ]);
     }
@@ -57,8 +57,6 @@ class FightsController extends BaseHelperController
             $defenderBase = $this->getDoctrine()->getRepository(Base::class)->find($id);
             $attackerUnits = $service->mapAttackerUnits($attackerBase->getUnits());
             $service->prepareBattle($attackerBase, $defenderBase, $attackerUnits, $before, $this->getDoctrine());
-            $service->getPlayerBattles($attackerBase, $this->getDoctrine());
-            //$fightService->organiseAssault($attackerBase,$defenderBase,$this->getDoctrine());
             return $this->redirectToRoute('fight_players');
         }
         return $this->render("fight/attackMenu.html.twig", ['form' => $form->createView()]);
@@ -75,18 +73,18 @@ class FightsController extends BaseHelperController
         /**
          * @var  $battle Battle
          */
-        $currentTime=new \DateTime();
-        $timestamp=$currentTime->getTimestamp();
-        $compare=new \DateTime('2016-12-15 20:07');
+        $currentTime = new \DateTime();
+        $timestamp = $currentTime->getTimestamp();
+        $compare = new \DateTime('2016-12-15 20:07');
         var_dump($compare);
         //$time=$this->getDoctrine()->getRepository(StructureUpgrade::class)->find(11)->getFinishesOn();
         var_dump($currentTime->diff($compare)->format('%d days %h hours %i minutes'));
-        $differences=$compare->getTimestamp()-$timestamp;
-        $arr=[];
-        $arr['days']=floor($differences/86400);
-        $arr['hours']=floor(($differences%86400)/3600);
-        $arr['minutes']=floor(($differences%3600)/60);
-        $arr['seconds']=floor($differences%60);
+        $differences = $compare->getTimestamp() - $timestamp;
+        $arr = [];
+        $arr['days'] = floor($differences / 86400);
+        $arr['hours'] = floor(($differences % 86400) / 3600);
+        $arr['minutes'] = floor(($differences % 3600) / 60);
+        $arr['seconds'] = floor($differences % 60);
         var_dump($arr);
 
     }

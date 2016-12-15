@@ -13,6 +13,7 @@ use ArchBundle\Services\Base\BaseGenerationInterface;
 use ArchBundle\Services\Fight\FightServiceInterface;
 use ArchBundle\Services\Structure\StructureHelperServiceInterface;
 use ArchBundle\Services\Unit\UnitHelperInterface;
+use ArchBundle\Services\View\ViewHelperInterface;
 
 class ServiceHolder
 {
@@ -21,19 +22,31 @@ class ServiceHolder
     private $baseGeneration;
     private $unitHelper;
     private $fightService;
+    private $viewHelper;
     public function __construct
     (
+        ViewHelperInterface $viewHelper,
         BaseGenerationInterface $baseGeneration,
         StructureHelperServiceInterface $structureHelperService,
         UnitHelperInterface $unitHelper,
         FightServiceInterface $fightService
     )
     {
+        $this->viewHelper=$viewHelper;
         $this->fightService=$fightService;
         $this->unitHelper=$unitHelper;
         $this->structureHelper = $structureHelperService;
         $this->baseGeneration = $baseGeneration;
     }
+
+    /**
+     * @return ViewHelperInterface
+     */
+    public function getViewHelper(): ViewHelperInterface
+    {
+        return $this->viewHelper;
+    }
+
 
     /**
      * @return FightServiceInterface

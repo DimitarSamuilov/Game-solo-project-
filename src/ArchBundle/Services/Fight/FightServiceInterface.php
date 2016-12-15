@@ -12,7 +12,6 @@ namespace ArchBundle\Services\Fight;
 interface FightServiceInterface
 {
     public function organiseAssault($battle,$doctrine);
-    public function getBasesView($bases, $currentBase,$doctrine);
     public function areMoreSoldiersAdded($currentUnits,$newlyEnteredUnits);
     public function mapAttackerUnits($army);
     public function sendArmy($attackerBase,$defenderBase,$armyArr,$before,$doctrine);

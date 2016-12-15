@@ -83,63 +83,6 @@ class StructureHelperService implements StructureHelperServiceInterface
     }
 
     /**
-     * @param $structures Structure
-     * @param $user User
-     * @return array
-     */
-    public function prepareStructureViewModel($structures, $user)
-    {
-        $resultViewArray = [];
-        foreach ($structures as $structure) {
-            /**
-             * @var $structure Structure
-             * @var $structureCost StructureCost
-             */
-            $tempViewObject = new StructureViewModel();
-            $upgrade = $structure->getStructureUpgrade();
-            if ($upgrade !== null) {
-                $tempViewObject
-                    ->setUpgradeTime(
-                    /*rework*/
-                        $this->formatCountDownTime($upgrade->getFinishesOn())
-                    );
-            }
-            $tempViewObject->setRequiredTime(
-                $this->calculateUpgradeTime(
-                    $structure->getStructureName()->getTime(), $structure->getLevel()));
-            $tempViewObject->setName($structure->getStructureName()->getName());
-            $tempViewObject->setId($structure->getId());
-            $tempViewObject->setUsername($user->getUsername());
-            $tempViewObject->setLevel($structure->getLevel());
-            foreach ($structure->getStructureName()->getStructureCost() as $structureCost) {
-                if ($structureCost->getResource()->getName() == "Wood") {
-                    $tempViewObject->setWood($structureCost->getAmount() * ($structure->getLevel() + 1));
-                } else if ($structureCost->getResource()->getName() == "Coin") {
-                    $tempViewObject->setCoin($structureCost->getAmount() * ($structure->getLevel() + 1));
-                }
-            }
-            $resultViewArray[] = $tempViewObject;
-        }
-
-        return $resultViewArray;
-
-    }
-
-    private function formatCountDownTime($date)
-    {
-        $currentTime = new \DateTime();
-        $currentTimeStamp = $currentTime->getTimestamp();
-        $compareTimeStamp = $date->getTimestamp();
-        $difference = $compareTimeStamp - $currentTimeStamp;
-        $arr = [];
-        $arr['days'] = floor($difference / 86400);
-        $arr['hours'] = floor(($difference % 86400) / 3600);
-        $arr['minutes'] = floor(($difference % 3600) / 60);
-        $arr['seconds'] = floor($difference % 60);
-        return 'Days:' . $arr['days'] . ' Hours:' . $arr['hours'] . ' Minutes:' . $arr['minutes'] . ' Seconds:' . $arr['seconds'];
-    }
-
-    /**
      * @param $doctrine Registry
      * @param $id
      * @return  bool

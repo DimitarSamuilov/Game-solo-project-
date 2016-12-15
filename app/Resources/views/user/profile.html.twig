@@ -1,9 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <ul class="nav navbar-nav navbar-left">
-        <li><a href="{{ path('base_structure') }}">View Structures</a></li>
-        <li><a href="{{ path('base_units_view') }}"> View Battle Units</a></li>
-    </ul>
+
+    <a href="{{ path('base_structure') }}" class="btn btn-primary">View Structures</a>
+    <a href="{{ path('base_units_view') }}" class="btn btn-primary">View Battle Units</a>
+    {% if battleLogs %}
+<div class="list-group">
+        {% for log in battleLogs  %}
+        <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ log.title }}</h4>
+            <p class="list-group-item-text">{{ log.content }}</p>
+        </a>
+        {% endfor %}
+    </div>
+{% endif %}
 {% endblock %}
 

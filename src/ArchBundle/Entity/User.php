@@ -60,8 +60,18 @@ class User implements UserInterface
      */
     private $bases;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\BattleLog",mappedBy="user")
+     *
+     */
+    private $battleLogs;
+
+
     public function __construct()
     {
+        $this->battleLogs=new ArrayCollection();
+        $this->bases= new ArrayCollection();
         $this->bases = new ArrayCollection();
         $this->roles = new ArrayCollection();
     }
@@ -71,6 +81,26 @@ class User implements UserInterface
         return $this->getUsername();
     }
 
+    public function addBattleLog($battleLog)
+    {
+        $this->battleLogs[]=$battleLog;
+        return $this;
+    }
+    /**
+     * @return ArrayCollection
+     */
+    public function getBattleLogs(): ArrayCollection
+    {
+        return $this->battleLogs;
+    }
+
+    /**
+     * @param ArrayCollection $battleLogs
+     */
+    public function setBattleLogs(ArrayCollection $battleLogs)
+    {
+        $this->battleLogs = $battleLogs;
+    }
 
     /**
      * Get id
