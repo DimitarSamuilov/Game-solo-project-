@@ -18,9 +18,12 @@ class UserType extends AbstractType
             ->add('username',TextType::class)
             ->add('password',RepeatedType::class,[
                 'required'=>true,
-                'invalid_message' => 'parolite ne savpadat'
+                'invalid_message' => 'Password mismatch!!'
             ])
-            ->add('email',EmailType::class)
+            ->add('email',EmailType::class,[
+                'required'=>true,
+                'invalid_message' => 'Invalid Email!!!'
+            ])
             ->add('submit',SubmitType::class);
     }
 

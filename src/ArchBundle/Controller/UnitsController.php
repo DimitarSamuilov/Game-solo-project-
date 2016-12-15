@@ -51,7 +51,7 @@ class UnitsController extends BaseHelperController
             if (!$unitService->haveNeededResources($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine())) {
                 return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
             }
-            //$unitService->beginProduction($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine());
+            $unitService->beginProduction($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine());
             return $this->redirectToRoute("base_units_view");
         }
         return $this->render("units/produce.html.twig", ['form' => $form->createView()]);

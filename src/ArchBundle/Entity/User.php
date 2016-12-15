@@ -62,8 +62,8 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->bases=new ArrayCollection();
-        $this->roles=new ArrayCollection();
+        $this->bases = new ArrayCollection();
+        $this->roles = new ArrayCollection();
     }
 
     function __toString()
@@ -172,12 +172,12 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        $stringRoles=[];
+        $stringRoles = [];
         foreach ($this->roles as $role) {
             /**
              * @var $role Role
              */
-            $stringRoles[]= is_string($role)? $role: $role->getRole();
+            $stringRoles[] = is_string($role) ? $role : $role->getRole();
         }
         return $stringRoles;
     }
@@ -185,9 +185,10 @@ class User implements UserInterface
 
     public function addRoles(Role $role)
     {
-        $this->roles[]=$role;
+        $this->roles[] = $role;
         return $this;
     }
+
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -213,13 +214,13 @@ class User implements UserInterface
 
     public function setRoles(array $roles)
     {
-        $this->roles=$roles;
+        $this->roles = $roles;
         return $this;
     }
 
     public function isAdmin()
     {
-        return in_array('ROLE_ADMIN',$this->getRoles());
+        return in_array('ROLE_ADMIN', $this->getRoles());
     }
 
     public function getBases()
