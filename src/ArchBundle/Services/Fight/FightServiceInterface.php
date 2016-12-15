@@ -17,4 +17,5 @@ interface FightServiceInterface
     public function mapAttackerUnits($army);
     public function sendArmy($attackerBase,$defenderBase,$armyArr,$before,$doctrine);
     public function isBaseDestroyed($attackingForce, $defendingForce);
+    public function getPlayerAssaultUnits($attackerBase,$doctrine);
 }

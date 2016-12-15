@@ -66,21 +66,39 @@ class FightService implements FightServiceInterface
 
     /**
      * @param $attackerBase Base
+     * @param $doctrine Registry
+     * @return mixed
+     */
+    public function getPlayerAssaultUnits($attackerBase,$doctrine)
+    {
+        $battlesToProcess=[];
+        $currentDate=new \DateTime();
+        $battleUnits=$doctrine->getRepository(BattleUnit::class)->findBy(['attackerBase'=>$attackerBase,]);
+        foreach ($battleUnits as $battleUnit){
+            if($currentDate>$battleUnit->getArrivesOn()){
+                $battlesToProcess[]=$battleUnit;
+            }
+        }
+        return $battlesToProcess;
+
+    }
+    /**
+     * @param $attackerBase Base
      * @param $defenderBase Base
      * @param $doctrine Registry
      */
     public function organiseAssault($attackerBase, $defenderBase, $doctrine)
     {
-        $attackerUnits=$doctrine->getRepository(BattleUnit::class)->findBy(['attackerBase'=>$attackerBase,'defenderBase'=>$defenderBase]);
+
+        $attackerUnits = $doctrine->getRepository(BattleUnit::class)->findBy(['attackerBase' => $attackerBase, 'defenderBase' => $defenderBase]);
         $battleResult = $this->isBaseDestroyed($attackerUnits, $defenderBase->getUnits());
         if ($battleResult[0] === true) {
-
-            /*if($battleResult[1] !=true){
-                $attackerUnits=$this->battleCasualties($attackerUnits);
-            }*/
+            if ($battleResult[1] != true) {
+                $attackerUnits = $this->battleCasualties($attackerUnits);
+            }
             echo 'base Destroyed';
             $this->attackerWins($attackerBase->getUser(), $this->mapAttackerUnits($attackerUnits), $defenderBase, $doctrine);
-            $this->nullifyBattleUnits($attackerUnits,$doctrine);
+            $this->nullifyBattleUnits($attackerUnits, $doctrine);
         } else {
             echo 'base Survived';
             if ($battleResult[1] != true) {
@@ -117,23 +135,24 @@ class FightService implements FightServiceInterface
      * @param $doctrine Registry
      * @var $unit BattleUnit
      */
-    private function nullifyBattleUnits($battleUnits,$doctrine)
+    private function nullifyBattleUnits($battleUnits, $doctrine)
     {
-        $em=$doctrine->getManager();
-        foreach ($battleUnits as $unit){
+        $em = $doctrine->getManager();
+        foreach ($battleUnits as $unit) {
             $em->remove($unit);
             $em->flush();
         }
     }
+
     /**
      * @param $defenderBase Base
      * @param $doctrine Registry
      */
     private function defenderHolds($defenderBase, $doctrine)
     {
-/*        $em = $doctrine->getManager();
+        $em = $doctrine->getManager();
         $em->persist($defenderBase);
-        $em->flush();*/
+        $em->flush();
     }
 
 
@@ -214,7 +233,7 @@ class FightService implements FightServiceInterface
         $y = $yArr[0] - $yArr[1];
         $distance = ceil(sqrt(pow($x, 2) + pow($y, 2)));
         $distance *= 10;
-        $attackTime = new \DateTime(null,new \DateTimeZone('Europe/Sofia'));
+        $attackTime = new \DateTime(null, new \DateTimeZone('Europe/Sofia'));
         $attackTime = $attackTime->add(\DateInterval::createFromDateString($distance . ' seconds'));
         return $attackTime;
     }

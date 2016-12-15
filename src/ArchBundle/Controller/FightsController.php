@@ -50,10 +50,22 @@ class FightsController extends BaseHelperController
             $defenderBase = $this->getDoctrine()->getRepository(Base::class)->find($id);
             $mappedResults = $service->mapAttackerUnits($attackerBase->getUnits());
             $service->sendArmy($attackerBase, $defenderBase, $mappedResults,$before, $this->getDoctrine());
-            $fightService->organiseAssault($attackerBase,$defenderBase,$this->getDoctrine());
+            //$fightService->organiseAssault($attackerBase,$defenderBase,$this->getDoctrine());
             return $this->redirectToRoute('fight_players');
         }
         return $this->render("fight/attackMenu.html.twig", ['form' => $form->createView()]);
     }
 
+    /**
+     *
+     * @Route("/test")
+     */
+    public function test()
+    {
+        $base=$this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
+        $battleUnits=$this->get('services')->getFightService()->getPlayerAssaultUnits($base,$this->getDoctrine());
+        foreach ($battleUnits as $unit){
+            var_dump($unit);
+        }
+    }
 }
