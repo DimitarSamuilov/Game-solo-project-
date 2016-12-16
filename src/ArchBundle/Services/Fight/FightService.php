@@ -18,6 +18,7 @@ use ArchBundle\Entity\User;
 use ArchBundle\Models\ViewModel\PlayerBaseModel;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class FightService implements FightServiceInterface
 {
@@ -60,6 +61,19 @@ class FightService implements FightServiceInterface
      */
     public function prepareBattle($attackerBase,$defenderBase,$army,$before,$doctrine)
     {
+        if($attackerBase->getUser()->getId()===$defenderBase->getUser()->getId())
+        {
+            throw new Exception("You cannot attack your own base!");
+        }
+        $battleCheck=$doctrine->
+        getRepository(Battle::class)->
+        findOneBy([
+            'attackerBase'=>$attackerBase,'defenderBase'=>$defenderBase
+        ]);
+        if($battleCheck!==null){
+            throw new Exception("You cannot attack the same base twice");
+        }
+
         $coordinateX=[$attackerBase->getX(),$defenderBase->getX()];
         $coordinateY=[$attackerBase->getY(),$defenderBase->getY()];
         $battleTime=$this->calculateTime($coordinateX,$coordinateY);
@@ -334,11 +348,11 @@ class FightService implements FightServiceInterface
          * @var $unit Unit
          */
         foreach ($newlyEnteredUnits as $unit) {
-            if ($unit->getCount() > $currentUnits[$unit->getUnitName()->getName()] or ($unit->getCount() < 0)) {
-                return true;
+            if (($unit->getCount() > $currentUnits[$unit->getUnitName()->getName()] or ($unit->getCount() < 0))) {
+                throw new Exception('You \'t gave that much '.$unit->getUnitName()->getName().'s !');
             }
         }
-        return false;
+        return true;
     }
 
 

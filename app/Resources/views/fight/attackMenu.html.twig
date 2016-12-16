@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+     {% if app.session.flashBag.has('error') %}
+<div class="alert alert-danger">
+    {% for error in app.session.flashBag.get('error') %}
+        {{ error }}
+    {% endfor %}
+    </div>
+    {% endif %}
     {{ form_start(form) }}
     {{ form_row(form.units) }}
-    {% for name in form.units  %}
+    {% for name in form.units %}
         {{ form_row(name.count) }}
     {% endfor %}
     {{ form_end(form) }}
-{% endblock %}
+    {% endblock %}
 

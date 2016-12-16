@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+    {% if app.session.flashBag.has('error') %}
+        <div class="alert alert-danger">
+            {% for error in app.session.flashBag.get('error') %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
     <div class="container body-content">
         <div class="well">
             <h2>All Users</h2>

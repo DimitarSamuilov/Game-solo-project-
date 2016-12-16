@@ -6,6 +6,7 @@ use ArchBundle\Entity\Base;
 use ArchBundle\Entity\Structure;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -41,11 +42,14 @@ class StructureController extends BaseHelperController
     public function upgradeStructure($structureId)
     {
         $service = $this->get('services')->getStructureHelper();
-        $haveNeededResources = $service->haveResources($this->getDoctrine(), $structureId);
-        if ($haveNeededResources) {
+        try {
+            $service->haveResources($this->getDoctrine(), $structureId);
             $structure = $this->getDoctrine()->getRepository(Structure::class)->find($structureId);
             $service->beginUpgrade($structure, $this->getDoctrine());
             $service->allocateUpgradeResources($this->getBaseAction(), $structure, $this->getDoctrine());
+        }catch (Exception $exception){
+            $this->get('session')->getFlashBag()->add('error',$exception->getMessage());
+            return $this->redirectToRoute("base_structure");
         }
         return $this->redirectToRoute("base_structure");
     }

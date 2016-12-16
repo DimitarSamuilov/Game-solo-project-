@@ -11,6 +11,7 @@ use ArchBundle\Entity\StructureUpgrade;
 use ArchBundle\Entity\User;
 use ArchBundle\Models\ViewModel\StructureViewModel;
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 
 /**
@@ -96,6 +97,11 @@ class StructureHelperService implements StructureHelperServiceInterface
         $upgradeCost = $structure->getStructureName()->getStructureCost();
         $neededResources = $this->findNeededResources($upgradeCost, $currentStructureLevel);
         $result = $this->resourceCheck($availableResources, $neededResources);
+        if(!$result){
+            throw new Exception(
+                "You don't have enough resources to upgrade ".$structure->getStructureName()->getName()." !"
+            );
+        }
         return $result;
 
     }

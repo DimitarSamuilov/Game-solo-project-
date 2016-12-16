@@ -16,6 +16,7 @@ use ArchBundle\Entity\UnitName;
 use ArchBundle\Entity\UnitProduction;
 use ArchBundle\Models\ViewModel\UnitViewModel;
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class UnitHelperService implements UnitHelperInterface
 {
@@ -98,7 +99,11 @@ class UnitHelperService implements UnitHelperInterface
         $unitName = $doctrine->getRepository(UnitName::class)->find($unitNameId);
         $baseResources = $this->getAvailableResources($base->getResources());
         $neededResources = $this->getNeededUnitProductionResources($unitName, $unitAmount);
-        return $this->compareResources($baseResources, $neededResources);
+        $result=$this->compareResources($baseResources, $neededResources);
+        if(!$result){
+            throw new Exception('You don\'t meet the requirements to produce '.$unitAmount.' '.$unitName.'!');
+        }
+        return $result;
     }
 
     /**

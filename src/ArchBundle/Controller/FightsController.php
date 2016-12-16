@@ -8,12 +8,15 @@ use ArchBundle\Entity\Battle;
 use ArchBundle\Entity\StructureUpgrade;
 use ArchBundle\Form\AttackFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class FightsController
  * @package ArchBundle\Controller
+ * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
  * @Route("/fight")
  */
 class FightsController extends BaseHelperController
@@ -51,13 +54,16 @@ class FightsController extends BaseHelperController
         $form = $this->createForm(AttackFormType::class, $attackerBase);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
-            if ($service->areMoreSoldiersAdded($before, $attackerBase->getUnits())) {
-                return $this->render("fight/attackMenu.html.twig", ['form' => $form->createView()]);
+            try {
+                $service->areMoreSoldiersAdded($before, $attackerBase->getUnits());
+                $defenderBase = $this->getDoctrine()->getRepository(Base::class)->find($id);
+                $attackerUnits = $service->mapAttackerUnits($attackerBase->getUnits());
+                $service->prepareBattle($attackerBase, $defenderBase, $attackerUnits, $before, $this->getDoctrine());
+                return $this->redirectToRoute('fight_players');
+            }catch (Exception $exception){
+                $this->get('session')->getFlashBag()->add('error',$exception->getMessage());
+                return $this->render('fight/attackMenu.html.twig', ['form' => $form->createView()]);
             }
-            $defenderBase = $this->getDoctrine()->getRepository(Base::class)->find($id);
-            $attackerUnits = $service->mapAttackerUnits($attackerBase->getUnits());
-            $service->prepareBattle($attackerBase, $defenderBase, $attackerUnits, $before, $this->getDoctrine());
-            return $this->redirectToRoute('fight_players');
         }
         return $this->render("fight/attackMenu.html.twig", ['form' => $form->createView()]);
     }

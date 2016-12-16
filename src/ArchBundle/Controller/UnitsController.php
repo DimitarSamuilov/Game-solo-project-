@@ -1,6 +1,7 @@
 <?php
 
 namespace ArchBundle\Controller;
+
 use Alpha\B;
 use ArchBundle\Entity\Base;
 use ArchBundle\Entity\ResourceName;
@@ -11,6 +12,7 @@ use ArchBundle\Form\ProduceUnitType;
 use ArchBundle\Models\ViewModel\UnitViewModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -26,7 +28,7 @@ class UnitsController extends BaseHelperController
      */
     public function ViewUnitsAction()
     {
-        $this->get('services')->getUnitHelper()->unitProductionProcessing($this->getBaseAction(),$this->getDoctrine());
+        $this->get('services')->getUnitHelper()->unitProductionProcessing($this->getBaseAction(), $this->getDoctrine());
         $username = $this->getUser()->getUsername();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
         $unitsRepo = $this->getDoctrine()->getRepository(Unit::class)->findBy(['base' => $base]);
@@ -48,11 +50,19 @@ class UnitsController extends BaseHelperController
         $form = $this->createForm(ProduceUnitType::class, $unit);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
-            if (!$unitService->haveNeededResources($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine())) {
-                return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
-            }
+            try {
+                $unitService->haveNeededResources($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine());
             $unitService->beginProduction($unit->getUnitName(), $this->getBaseAction(), $unit->getCount(), $this->getDoctrine());
             return $this->redirectToRoute("base_units_view");
+            } catch (Exception $exception) {
+                $this->get('session')->getFlashBag()->add('error',$exception->getMessage());
+                return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
+            }
+        }
+        if($form->getErrors(true,false)->getChildren()) {
+            foreach ($form->getErrors(true, false)->getChildren()->current() as $item) {
+                $this->get('session')->getFlashBag()->add('error', $item->getMessageTemplate());
+            }
         }
         return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
     }
