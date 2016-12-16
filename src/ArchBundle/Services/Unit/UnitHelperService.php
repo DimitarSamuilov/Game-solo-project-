@@ -40,7 +40,6 @@ class UnitHelperService implements UnitHelperInterface
             if ($currentDate < $unit->getUnitProduction()->getFinishesOn()) {
                 continue;
             }
-
             $em = $doctrine->getManager();
             $currentUnits = $unit->getCount();
             $producedUnits = $unit->getUnitProduction()->getAmount();

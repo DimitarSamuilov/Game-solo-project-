@@ -34,6 +34,37 @@ class BaseGenerationService implements BaseGenerationInterface
     const MAX_Y = 100;
 
     /**
+     * @param $baseId
+     * @param $doctrine Registry
+     */
+    public function resourcePassiveIncome($baseId, $doctrine)
+    {
+        $base=$doctrine->getRepository(Base::class)->find($baseId);
+        $goldMine=$doctrine->getRepository(StructureName::class)->find(1);
+        $goldMineLevel=$doctrine->getRepository(Structure::class)->findOneBy(['structureName'=>$goldMine,'base'=>$base])->getLevel();
+        $lumberMill=$doctrine->getRepository(StructureName::class)->find(2);
+        $lumberMill=$doctrine->getRepository(Structure::class)->findOneBy(['structureName'=>$lumberMill,'base'=>$base])->getLevel();
+        $goldIncome=10*(1+$goldMineLevel);
+        $lumberIncome=10*(1+$lumberMill);
+        $resourcesIncome['Coin']=$goldIncome;
+        $resourcesIncome['Wood']=$lumberIncome;
+        $resources=$base->getResources();
+        $em=$doctrine->getManager();
+        /**
+         * @var $resource BaseResource
+         */
+        foreach ($resources as $resource){
+            $current=$resource->getAmount();
+            $resource->setAmount($current+$resourcesIncome[$resource->getResourceName()->getName()]);
+            $em->persist($resource);
+            $em->flush();
+        }
+
+
+    }
+
+
+    /**
      * @param $doctrine Registry
      * @param $user
      *

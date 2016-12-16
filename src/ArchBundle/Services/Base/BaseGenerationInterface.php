@@ -13,5 +13,6 @@ interface BaseGenerationInterface
 {
     public function generateBases( $doctrine,$id);
 
+    public function resourcePassiveIncome($baseId,$doctrine);
 
 }
