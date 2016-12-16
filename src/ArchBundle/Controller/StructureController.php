@@ -28,7 +28,6 @@ class StructureController extends BaseHelperController
 
         $service = $this->get('services')->getStructureHelper();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        $service->structureUpgradeProcessing($this->getBaseAction(), $this->getDoctrine());
         $structures = $base->getStructures();
         $viewArray = $this->get('services')->getViewHelper()->prepareStructureViewModel($structures, $this->getUser());
         return $this->render("base/viewStructures.html.twig", ['structures' => $viewArray]);

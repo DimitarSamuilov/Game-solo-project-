@@ -25,7 +25,6 @@ class UnitsController extends BaseHelperController
      */
     public function ViewUnitsAction()
     {
-        $this->get('services')->getUnitHelper()->unitProductionProcessing($this->getBaseAction(), $this->getDoctrine());
         $username = $this->getUser()->getUsername();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
         $unitsRepo = $this->getDoctrine()->getRepository(Unit::class)->findBy(['base' => $base]);

@@ -27,10 +27,6 @@ class FightsController extends BaseHelperController
     public function listPlayerBasesAction()
     {
         $currentBase = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        $battles = $this->get('services')->getFightService()->getPlayerBattles($currentBase, $this->getDoctrine());
-        foreach ($battles as $battle) {
-            $this->get('services')->getFightService()->organiseAssault($battle, $this->getDoctrine());
-        }
         $bases = $this->getDoctrine()->getRepository(Base::class)->findAll();
         $currentBase = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
         return $this->render("fight/userBases.html.twig",
