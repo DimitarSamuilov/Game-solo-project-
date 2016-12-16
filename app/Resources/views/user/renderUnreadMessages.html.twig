@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    {% if app.session.flashBag.has('error') %}
+        <div class="alert alert-danger">
+            {% for error in app.session.flashBag.get('error') %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="list-group">
+        {% for message in messages %}
+            {% if message.isRead==false %}
+            <div href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ message.sender.getUsername }}</h4>
+                <p class="list-group-item-text">{{ message.content }}</p>
+                <p class="list-group-item-text">Received on: {{ message.send }}</p>
+                <a class="btn btn-info btn-xs"  href="{{ path('mark_as_read',{messageId:message.id}) }}" >Mark message as read</a>
+            </div >
+        {% endif %}
+        {% endfor %}
+        <a class="btn btn-info "  href="{{ path('mark_all_as_read') }}" >Mark All as read</a>
+    </div>
+{% endblock %}
+

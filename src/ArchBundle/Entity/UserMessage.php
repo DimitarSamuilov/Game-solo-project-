@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserMessage
  *
- * @ORM\Table(name="user_message")
+ * @ORM\Table(name="user_messages")
  * @ORM\Entity(repositoryClass="ArchBundle\Repository\UserMessageRepository")
  */
 class UserMessage
@@ -22,11 +22,17 @@ class UserMessage
     private $id;
 
     /**
-     * @var \DateTime
+     * @var mixed
      *
      * @ORM\Column(name="send", type="datetime")
      */
     private $send;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="recipient",type="string")
+     */
+    private $recipient;
 
     /**
      * @var string
@@ -42,6 +48,72 @@ class UserMessage
      */
     private $isRead;
 
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\User",inversedBy="sendMessages")
+     * @ORM\JoinTable(name="sender_id")
+     */
+    private $sender;
+
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="ArchBundle\Entity\User",inversedBy="receivedMessages")
+     * @ORM\JoinTable(name="receiver_id")
+     */
+    private $receiver;
+
+    /**
+     * @return User
+     */
+    public function getSender(): User
+    {
+        return $this->sender;
+    }
+
+    /**
+     * @param User $sender
+     */
+    public function setSender(User $sender)
+    {
+        $this->sender = $sender;
+    }
+
+    /**
+     * @return User
+     */
+    public function getReceiver(): User
+    {
+        return $this->receiver;
+    }
+
+    /**
+     * @param User $receiver
+     */
+    public function setReceiver(User $receiver)
+    {
+        $this->receiver = $receiver;
+    }
+
+
+
+
+    /**
+     * @return string
+     */
+    public function getRecipient()
+    {
+        return $this->recipient;
+    }
+
+    /**
+     * @param string $recipient
+     */
+    public function setRecipient($recipient)
+    {
+        $this->recipient = $recipient;
+    }
+
 
     /**
      * Get id
@@ -56,7 +128,7 @@ class UserMessage
     /**
      * Set send
      *
-     * @param \DateTime $send
+     * @param mixed $send
      *
      * @return UserMessage
      */
@@ -70,7 +142,7 @@ class UserMessage
     /**
      * Get send
      *
-     * @return \DateTime
+     * @return mixed
      */
     public function getSend()
     {

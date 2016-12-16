@@ -32,7 +32,7 @@ class UnitsController extends BaseHelperController
         $username = $this->getUser()->getUsername();
         $base = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
         $unitsRepo = $this->getDoctrine()->getRepository(Unit::class)->findBy(['base' => $base]);
-        $viewArray = $this->get('services')->getUnitHelper()->getViewArray($unitsRepo);
+        $viewArray = $this->get('services')->getViewHelper()->getViewArray($unitsRepo);
         return $this->render('units/view.html.twig', ['units' => $viewArray, 'username' => $username]);
     }
 

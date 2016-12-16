@@ -4,6 +4,9 @@
 
     <a href="{{ path('base_structure') }}" class="btn btn-primary">View Structures</a>
     <a href="{{ path('base_units_view') }}" class="btn btn-primary">View Battle Units</a>
+    <a href="{{ path('user_send_message_form') }}" class="btn btn-primary">Send Message</a>
+    <a href="{{ path('users_unread_messages') }}" class="btn btn-primary">View Unread Messages</a>
+    <a href="{{ path('users_read_messages') }}" class="btn btn-primary">View Read Messages</a>
     <hr>
     {% if battleLogs %}
 <div class="list-group">
@@ -11,6 +14,7 @@
         <a href="#" class="list-group-item">
             <h4 class="list-group-item-heading">{{ log.title }}</h4>
             <p class="list-group-item-text">{{ log.content }}</p>
+            <p class="list-group-item-text">Received on: {{ log.getReceivedTime }}</p>
         </a>
         {% endfor %}
     </div>

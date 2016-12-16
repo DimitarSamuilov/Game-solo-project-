@@ -54,6 +54,10 @@ class BattleLog
         $this->setTime(new \DateTime());
     }
 
+    public function getReceivedTime()
+    {
+        return $this->getTime()->format('F j, Y, g:i a');
+    }
     /**
      * @return User
      */

@@ -17,6 +17,23 @@ class UnitViewModel
     private $count;
     private $productionTime;
     private $productionAmount;
+    private $productionTimeRequirements;
+
+    /**
+     * @return mixed
+     */
+    public function getProductionTimeRequirements()
+    {
+        return $this->productionTimeRequirements;
+    }
+
+    /**
+     * @param mixed $productionTimeRequirements
+     */
+    public function setProductionTimeRequirements($productionTimeRequirements)
+    {
+        $this->productionTimeRequirements = $productionTimeRequirements;
+    }
 
     /**
      * @return mixed
@@ -49,8 +66,8 @@ class UnitViewModel
      */
     public function setProductionTime($productionTime)
     {
-        //$this->productionTime = $productionTime->format('Y-m-d H:i:s');
-        $this->productionTime = $productionTime->diff(new \DateTime())->format("%d days %h hours %i minutes ");
+
+        $this->productionTime = $productionTime;
     }
 
 

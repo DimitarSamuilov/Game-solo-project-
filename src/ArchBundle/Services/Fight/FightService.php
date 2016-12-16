@@ -31,27 +31,28 @@ class FightService implements FightServiceInterface
      * @param $battleTime \DateTime
      * @param $doctrine Registry
      */
-    private function generateBattleLog($battle,$battleTime,$doctrine)
+    private function generateBattleLog($battle, $battleTime, $doctrine)
     {
-        $userBase=$battle->getDefenderBase();
-        $attackerBase=$battle->getAttackerBase();
-        $attacker=$attackerBase->getUser();
-        $user=$userBase->getUser();
-        $battleLog=new BattleLog();
+        $userBase = $battle->getDefenderBase();
+        $attackerBase = $battle->getAttackerBase();
+        $attacker = $attackerBase->getUser();
+        $user = $userBase->getUser();
+        $battleLog = new BattleLog();
         $battleLog->setTitle('Battle warning!!');
-        $message=
-            'Player '.$attacker->getUsername().
-            ' is attacking you!!!He will be at you base .['.
-            $userBase->getX().':'.$userBase->getY().'] at '.$battleTime->format('F j, Y, g:i a');
+        $message =
+            'Player ' . $attacker->getUsername() .
+            ' is attacking you!!!He will be at you base .[' .
+            $userBase->getX() . ':' . $userBase->getY() . '] at ' . $battleTime->format('F j, Y, g:i a');
         $battleLog->setContent($message);
         $battleLog->setUser($user);
-        $em=$doctrine->getManager();
+        $em = $doctrine->getManager();
         $em->persist($battleLog);
         $user->addBattleLog($battleLog);
         $em->persist($user);
         $em->flush();
 
     }
+
     /**
      * @param $attackerBase Base
      * @param $defenderBase Base
@@ -59,41 +60,40 @@ class FightService implements FightServiceInterface
      * @param $before
      * @param $doctrine Registry
      */
-    public function prepareBattle($attackerBase,$defenderBase,$army,$before,$doctrine)
+    public function prepareBattle($attackerBase, $defenderBase, $army, $before, $doctrine)
     {
-        if($attackerBase->getUser()->getId()===$defenderBase->getUser()->getId())
-        {
+        if ($attackerBase->getUser()->getId() === $defenderBase->getUser()->getId()) {
             throw new Exception("You cannot attack your own base!");
         }
-        $battleCheck=$doctrine->
+        $battleCheck = $doctrine->
         getRepository(Battle::class)->
         findOneBy([
-            'attackerBase'=>$attackerBase,'defenderBase'=>$defenderBase
+            'attackerBase' => $attackerBase, 'defenderBase' => $defenderBase
         ]);
-        if($battleCheck!==null){
+        if ($battleCheck !== null) {
             throw new Exception("You cannot attack the same base twice");
         }
 
-        $coordinateX=[$attackerBase->getX(),$defenderBase->getX()];
-        $coordinateY=[$attackerBase->getY(),$defenderBase->getY()];
-        $battleTime=$this->calculateTime($coordinateX,$coordinateY);
+        $coordinateX = [$attackerBase->getX(), $defenderBase->getX()];
+        $coordinateY = [$attackerBase->getY(), $defenderBase->getY()];
+        $battleTime = $this->calculateTime($coordinateX, $coordinateY);
 
-        $uniNames=$doctrine->getRepository(UnitName::class)->findAll();
-        $battle=new Battle();
+        $uniNames = $doctrine->getRepository(UnitName::class)->findAll();
+        $battle = new Battle();
         $battle->setStartsOn($battleTime);
         $battle->setAttackerBase($attackerBase);
         $battle->setDefenderBase($defenderBase);
-        $em=$doctrine->getEntityManager();
+        $em = $doctrine->getEntityManager();
         $em->persist($battle);
         $em->flush();
 
-        $battleUnits=$this->createBattleUnits($battle,$army,$uniNames,$doctrine);
+        $battleUnits = $this->createBattleUnits($battle, $army, $uniNames, $doctrine);
         $battle->setBattleUnits($battleUnits);
         $em->persist($battle);
         $em->flush();
 
         $this->subtractAttackerUnits($attackerBase, $army, $before, $doctrine);
-        $this->generateBattleLog($battle,$battleTime,$doctrine);
+        $this->generateBattleLog($battle, $battleTime, $doctrine);
     }
 
     /**
@@ -103,15 +103,15 @@ class FightService implements FightServiceInterface
      * @param $doctrine Registry
      * @return array|ArrayCollection
      */
-    private function createBattleUnits($battle,$armyArr,$unitNames,$doctrine)
+    private function createBattleUnits($battle, $armyArr, $unitNames, $doctrine)
     {
-        $em=$doctrine->getManager();
-        $battleUnits=new ArrayCollection();
+        $em = $doctrine->getManager();
+        $battleUnits = new ArrayCollection();
         /**
          * @var $unitName UnitName
          */
-        foreach ($unitNames as $unitName){
-            $battleUnit=new BattleUnit();
+        foreach ($unitNames as $unitName) {
+            $battleUnit = new BattleUnit();
             $battleUnit->setUnitName($unitName);
             $battleUnit->setCount($armyArr[$unitName->getName()]);
             $battleUnit->setBattle($battle);
@@ -168,17 +168,17 @@ class FightService implements FightServiceInterface
      * @param $doctrine Registry
      * @return mixed
      */
-    public function getPlayerBattles($attackerBase,$doctrine)
+    public function getPlayerBattles($attackerBase, $doctrine)
     {
-        $battlesToProcess=[];
-        $currentDate=new \DateTime();
-        $battleUnits=$doctrine->getRepository(Battle::class)->findBy(['attackerBase'=>$attackerBase,]);
+        $battlesToProcess = [];
+        $currentDate = new \DateTime();
+        $battleUnits = $doctrine->getRepository(Battle::class)->findBy(['attackerBase' => $attackerBase,]);
         /**
          * @var $battle Battle
          */
-        foreach ($battleUnits as $battle){
-            if($currentDate>$battle->getStartsOn()){
-                $battlesToProcess[]=$battle;
+        foreach ($battleUnits as $battle) {
+            if ($currentDate > $battle->getStartsOn()) {
+                $battlesToProcess[] = $battle;
             }
 
         }
@@ -191,15 +191,17 @@ class FightService implements FightServiceInterface
      */
     public function organiseAssault($battle, $doctrine)
     {
-        $attackerBase=$battle->getAttackerBase();
-        $defenderBase=$battle->getDefenderBase();
-        $attackerUnits =$battle->getBattleUnits();
+        $attackerBase = $battle->getAttackerBase();
+        $defenderBase = $battle->getDefenderBase();
+        $attackerUnits = $battle->getBattleUnits();
         $battleResult = $this->isBaseDestroyed($attackerUnits, $defenderBase->getUnits());
         if ($battleResult[0] === true) {
             if ($battleResult[1] != true) {
                 $attackerUnits = $this->battleCasualties($attackerUnits);
             }
             echo 'base Destroyed';
+            $this->generateBaseConqueredWinnerLog($battle, $doctrine);
+            $this->generateBaseConqueredLooserLog($battle, $doctrine);
             $this->attackerWins($attackerBase->getUser(), $this->mapAttackerUnits($attackerUnits), $defenderBase, $doctrine);
 
         } else {
@@ -207,10 +209,107 @@ class FightService implements FightServiceInterface
             if ($battleResult[1] != true) {
                 $defenderBase->setUnits($this->battleCasualties($defenderBase->getUnits()));
             }
+            $this->generateBaseHoldsWinnerLog($battle, $doctrine);
+            $this->generateBaseHoldsLooserLog($battle, $doctrine);
             $this->defenderHolds($defenderBase, $doctrine);
         }
         $this->nullifyBattleUnits($battle, $doctrine);
     }
+
+    /**
+     * @param $battle Battle
+     * @param $doctrine Registry
+     */
+    private function generateBaseConqueredWinnerLog($battle, $doctrine)
+    {
+        $em = $doctrine->getManager();
+        $defendersBase = $battle->getDefenderBase();
+        $attacker = $battle->getAttackerBase()->getUser();
+        $winnerBattleLog = new BattleLog();
+        $winnerBattleLog->setTitle("Base conquered");
+        $winnerMessage =
+            "You conquered base ["
+            . $defendersBase->getX() . ":" . $defendersBase->getY() .
+            "] from " . $defendersBase->getUser()->getUsername() . " .";
+        $winnerBattleLog->setContent($winnerMessage);
+        $winnerBattleLog->setUser($attacker);
+        $em->persist($winnerBattleLog);
+        $attacker->addBattleLog($winnerBattleLog);
+        $em->persist($attacker);
+        $em->flush();
+    }
+
+    /**
+     * @param $battle Battle
+     * @param $doctrine Registry
+     */
+    public function generateBaseConqueredLooserLog($battle, $doctrine)
+    {
+        $em = $doctrine->getManager();
+        $defendersBase = $battle->getDefenderBase();
+        $defender = $battle->getDefenderBase()->getUser();
+        $attacker = $battle->getAttackerBase()->getUser();
+        $looserLog = new BattleLog();
+        $looserLog->setTitle("Base Lost");
+        $looserMessage =
+            "Your base ["
+            . $defendersBase->getX() . ":" . $defendersBase->getY() .
+            "] was conquered  from " . $attacker->getUsername() . " .";
+        $looserLog->setContent($looserMessage);
+        $looserLog->setUser($battle->getDefenderBase()->getUser());
+        $em->persist($looserLog);
+        $defender->addBattleLog($looserLog);
+        $em->persist($defender);
+        $em->flush();
+    }
+
+    /**
+     * @param $battle Battle
+     * @param $doctrine Registry
+     */
+    public function generateBaseHoldsWinnerLog($battle, $doctrine)
+    {
+        $em = $doctrine->getManager();
+        $defendersBase = $battle->getDefenderBase();
+        $defender = $defendersBase->getUser();
+        $attacker = $battle->getDefenderBase()->getUser();
+        $winnerLog = new BattleLog();
+        $winnerLog->setTitle("Base Survived Battle");
+        $looserMessage =
+            "Your successfully defended   ["
+            . $defendersBase->getX() . ":" . $defendersBase->getY() .
+            "] from " . $attacker->getUsername() . ".";
+        $winnerLog->setContent($looserMessage);
+        $winnerLog->setUser($attacker);
+        $em->persist($winnerLog);
+        $defender->addBattleLog($winnerLog);
+        $em->persist($defender);
+        $em->flush();
+    }
+
+    /**
+     * @param $battle Battle
+     * @param $doctrine Registry
+     */
+    public function generateBaseHoldsLooserLog($battle, $doctrine)
+    {
+        $em = $doctrine->getManager();
+        $defendersBase = $battle->getDefenderBase();
+        $attacker = $battle->getDefenderBase()->getUser();
+        $looserLog = new BattleLog();
+        $looserLog->setTitle("Base assault fail");
+        $looserMessage =
+            "Your assault on base ".$defendersBase->getUser()->getUsername()."'s  ["
+            . $defendersBase->getX() . ":" . $defendersBase->getY() .
+            "] was was unsuccessful.";
+        $looserLog->setContent($looserMessage);
+        $looserLog->setUser($attacker);
+        $em->persist($looserLog);
+        $attacker->addBattleLog($looserLog);
+        $em->persist($attacker);
+        $em->flush();
+    }
+
 
     /**
      * @param $attacker User
@@ -234,6 +333,7 @@ class FightService implements FightServiceInterface
         $em->flush();
     }
 
+
     /**
      * @param $battle Battle
      * @param $doctrine Registry
@@ -241,7 +341,7 @@ class FightService implements FightServiceInterface
      */
     private function nullifyBattleUnits($battle, $doctrine)
     {
-        $battleUnits=$battle->getBattleUnits();
+        $battleUnits = $battle->getBattleUnits();
         $em = $doctrine->getManager();
         foreach ($battleUnits as $unit) {
             $em->remove($unit);
@@ -323,6 +423,7 @@ class FightService implements FightServiceInterface
         $attackTime = $attackTime->add(\DateInterval::createFromDateString($distance . ' seconds'));
         return $attackTime;
     }
+
     /**
      * @param $army array
      * @return array
@@ -349,7 +450,7 @@ class FightService implements FightServiceInterface
          */
         foreach ($newlyEnteredUnits as $unit) {
             if (($unit->getCount() > $currentUnits[$unit->getUnitName()->getName()] or ($unit->getCount() < 0))) {
-                throw new Exception('You \'t gave that much '.$unit->getUnitName()->getName().'s !');
+                throw new Exception('You \'t gave that much ' . $unit->getUnitName()->getName() . 's !');
             }
         }
         return true;

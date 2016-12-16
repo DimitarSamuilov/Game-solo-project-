@@ -20,40 +20,6 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 
 class UnitHelperService implements UnitHelperInterface
 {
-    /**
-     * @param $unitRepo
-     * @return array
-     */
-    public function getViewArray($unitRepo)
-    {
-        $viewArray = [];
-        foreach ($unitRepo as $unit) {
-            /**
-             * @var $unit Unit
-             */
-            $tempViewObject = new UnitViewModel();
-            if ($unit->getUnitProduction() !== null) {
-                $finishTime = $unit->getUnitProduction()->getFinishesOn();
-                $tempViewObject->setProductionTime($finishTime);
-                $tempViewObject->setProductionAmount($unit->getUnitProduction()->getAmount());
-            }
-            $tempViewObject->setName($unit->getUnitName()->getName());
-            $tempViewObject->setCount($unit->getCount());
-            $unitCosts = $unit->getUnitName()->getUnitCost();
-            foreach ($unitCosts as $unitCost) {
-                /**
-                 * @var $unitCost UnitCost
-                 */
-                if ($unitCost->getResource()->getName() == "Wood") {
-                    $tempViewObject->setWood($unitCost->getAmount());
-                } else if ($unitCost->getResource()->getName() == "Coin") {
-                    $tempViewObject->setCoin($unitCost->getAmount());
-                }
-            }
-            $viewArray[] = $tempViewObject;
-        }
-        return $viewArray;
-    }
 
     /**
      * @param $baseId

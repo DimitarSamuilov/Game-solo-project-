@@ -13,15 +13,54 @@ use ArchBundle\Entity\Base;
 use ArchBundle\Entity\Battle;
 use ArchBundle\Entity\Structure;
 use ArchBundle\Entity\StructureCost;
+use ArchBundle\Entity\Unit;
+use ArchBundle\Entity\UnitCost;
 use ArchBundle\Entity\User;
 use ArchBundle\Models\ViewModel\PlayerBaseModel;
 use ArchBundle\Models\ViewModel\StructureViewModel;
+use ArchBundle\Models\ViewModel\UnitViewModel;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 
 
 class ViewHelper implements ViewHelperInterface
 {
 
+
+    /**
+     * @param $unitRepo
+     * @return array
+     */
+    public function getViewArray($unitRepo)
+    {
+        $viewArray = [];
+        foreach ($unitRepo as $unit) {
+            /**
+             * @var $unit Unit
+             */
+            $tempViewObject = new UnitViewModel();
+            if ($unit->getUnitProduction() !== null) {
+                $finishTime = $unit->getUnitProduction()->getFinishesOn();
+                $tempViewObject->setProductionTime($this->formatCountDownTime($finishTime));
+                $tempViewObject->setProductionAmount($unit->getUnitProduction()->getAmount());
+            }
+            $tempViewObject->setProductionTimeRequirements($unit->getUnitName()->getTime());
+            $tempViewObject->setName($unit->getUnitName()->getName());
+            $tempViewObject->setCount($unit->getCount());
+            $unitCosts = $unit->getUnitName()->getUnitCost();
+            foreach ($unitCosts as $unitCost) {
+                /**
+                 * @var $unitCost UnitCost
+                 */
+                if ($unitCost->getResource()->getName() == "Wood") {
+                    $tempViewObject->setWood($unitCost->getAmount());
+                } else if ($unitCost->getResource()->getName() == "Coin") {
+                    $tempViewObject->setCoin($unitCost->getAmount());
+                }
+            }
+            $viewArray[] = $tempViewObject;
+        }
+        return $viewArray;
+    }
 
     /**
      * @param $structures Structure
@@ -127,7 +166,7 @@ class ViewHelper implements ViewHelperInterface
     }
 
 
-    private function formatCountDownTime($date)
+    public function formatCountDownTime($date)
     {
         $currentTime = new \DateTime();
         $currentTimeStamp = $currentTime->getTimestamp();

@@ -67,14 +67,75 @@ class User implements UserInterface
      */
     private $battleLogs;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\UserMessage",mappedBy="sender")
+     */
+    private $sendMessages;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\UserMessage",mappedBy="receiver")
+     */
+    private $receivedMessages;
+
 
     public function __construct()
     {
+        $this->sendMessages=new ArrayCollection();
+        $this->receivedMessages=new ArrayCollection();
         $this->battleLogs=new ArrayCollection();
         $this->bases= new ArrayCollection();
         $this->bases = new ArrayCollection();
         $this->roles = new ArrayCollection();
     }
+    public function addSendMessages($message)
+    {
+        $this->sendMessages[]=$message;
+        return $this;
+    }
+
+    public function addReceivedMessages($message)
+    {
+
+        $this->receivedMessages[]=$message;
+        return $this;
+    }
+    /**
+     * @return ArrayCollection
+     */
+    public function getSendMessages()
+    {
+        return $this->sendMessages;
+    }
+
+    /**
+     * @param ArrayCollection $sendMessages
+     */
+    public function setSendMessages( $sendMessages)
+    {
+        $this->sendMessages = $sendMessages;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getReceivedMessages()
+    {
+        return $this->receivedMessages;
+    }
+
+    /**
+     * @param ArrayCollection $receivedMessages
+     */
+    public function setReceivedMessages( $receivedMessages)
+    {
+        $this->receivedMessages = $receivedMessages;
+    }
+
+
 
     function __toString()
     {

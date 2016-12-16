@@ -11,5 +11,4 @@ interface UnitHelperInterface
 
     public function unitProductionProcessing($baseId,$doctrine);
 
-    public function getViewArray($unitRepo);
 }

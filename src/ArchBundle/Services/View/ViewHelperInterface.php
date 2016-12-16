@@ -15,4 +15,8 @@ interface ViewHelperInterface
 
     public function prepareStructureViewModel($structures, $user);
 
+    public function getViewArray($unitRepo);
+
+    public function formatCountDownTime($date);
+
 }
