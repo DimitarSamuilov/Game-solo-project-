@@ -2,7 +2,11 @@
 
 namespace ArchBundle\Controller\Admin;
 
+use ArchBundle\Entity\Base;
+use ArchBundle\Entity\BaseResource;
+use ArchBundle\Entity\Battle;
 use ArchBundle\Entity\Role;
+use ArchBundle\Entity\Unit;
 use ArchBundle\Entity\User;
 use ArchBundle\Form\UserEditType;
 use ArchBundle\Form\UserType;
@@ -71,32 +75,5 @@ class UserController extends Controller
 
         }
         return $this->render('admin/user/edit.html.twig',['user'=>$user,'form'=>$form->createView()]);
-    }
-
-    /**
-     * @Route("/delete/{id}",name="admin_user_delete")
-     * @param $id
-     * @param Request $request
-     * @return Response
-     *
-     */
-    public function deleteUserAction($id,Request $request)
-    {
-        $user=$this->getDoctrine()->getRepository(User::class)->find($id);
-
-        if($user==null){
-            return $this->redirectToRoute('admin_users');
-        }
-
-        $form=$this->createForm(UserEditType::class,$user);
-
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $em=$this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
-            return $this->redirectToRoute('admin_users');
-        }
-        return $this->render('admin/user/delete.html.twig',['user'=>$user,'form'=>$form->createView()]);
     }
 }

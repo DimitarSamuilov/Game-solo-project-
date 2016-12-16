@@ -5,8 +5,8 @@ parameters:
     database_host:     127.0.0.1
     database_port:     ~
     database_name:     thegame
-    database_user:     root
-    database_password: ~
+    database_user:     arch
+    database_password: SoftUni123.
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 

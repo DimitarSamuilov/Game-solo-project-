@@ -150,7 +150,7 @@ class User implements UserInterface
     /**
      * @return ArrayCollection
      */
-    public function getBattleLogs(): ArrayCollection
+    public function getBattleLogs()
     {
         return $this->battleLogs;
     }
@@ -158,7 +158,7 @@ class User implements UserInterface
     /**
      * @param ArrayCollection $battleLogs
      */
-    public function setBattleLogs(ArrayCollection $battleLogs)
+    public function setBattleLogs($battleLogs)
     {
         $this->battleLogs = $battleLogs;
     }

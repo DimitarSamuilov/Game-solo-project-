@@ -24,7 +24,6 @@
                             <td>{{ user.email }}</td>
                             <td>
                                 <a href="{{ path("admin_user_edit",{'id':user.id}) }}">Edit</a>
-                                <a href="{{ path("admin_user_delete",{'id':user.id}) }}">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}
