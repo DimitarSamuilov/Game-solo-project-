@@ -10,11 +10,12 @@ namespace ArchBundle\Services\Unit;
 
 
 use ArchBundle\Entity\Base;
+use ArchBundle\Entity\Structure;
 use ArchBundle\Entity\Unit;
 use ArchBundle\Entity\UnitCost;
 use ArchBundle\Entity\UnitName;
 use ArchBundle\Entity\UnitProduction;
-use ArchBundle\Models\ViewModel\UnitViewModel;
+use ArchBundle\Entity\UnitStructureDependency;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
@@ -65,13 +66,39 @@ class UnitHelperService implements UnitHelperInterface
         $unitName = $doctrine->getRepository(UnitName::class)->find($unitNameId);
         $baseResources = $this->getAvailableResources($base->getResources());
         $neededResources = $this->getNeededUnitProductionResources($unitName, $unitAmount);
-        $result=$this->compareResources($baseResources, $neededResources);
-        if(!$result){
+        $resources=$this->compareResources($baseResources, $neededResources);
+        $levels=$this->buildingLevels($base,$unitName,$doctrine);
+        if(!$resources){
             throw new Exception('You don\'t meet the requirements to produce '.$unitAmount.' '.$unitName.'!');
         }
-        return $result;
+        if(!$levels){
+            throw new Exception('You need to upgrade the your structures for production of this unit');
+        }
+        return true;
     }
 
+    /**
+     * @param $currentBase Base
+     * @param $unitName UnitName
+     * @param $doctrine Registry
+     * @return bool
+     */
+    private function buildingLevels($currentBase,$unitName,$doctrine)
+    {
+        $neededLevel=$unitName->getNeededLevels();
+        $metRequirements=0;
+        /**
+         * @var $level UnitStructureDependency
+         */
+        foreach ($neededLevel as $level){
+            $structure=$level->getStructureRequired();
+            $currentLevel=$doctrine->getRepository(Structure::class)->findOneBy(['base'=>$currentBase,'structureName'=>$structure]);
+
+            if($currentLevel->getLevel()>=$level->getLevel())
+                $metRequirements++;
+        }
+        return ($metRequirements>=sizeof($neededLevel));
+    }
     /**
      * @param $unitName
      * @param $baseId
@@ -149,6 +176,8 @@ class UnitHelperService implements UnitHelperInterface
                 $count++;
             }
         }
+
         return $count >= sizeof($needed);
     }
+
 }

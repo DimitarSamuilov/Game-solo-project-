@@ -8,11 +8,17 @@
             {% endfor %}
         </div>
     {% endif %}
+    {% for unit in units  %}
+    <div class="list-group" >
+        <h4 class="list-group-item-heading">{{ unit.name }}</h4>
+        <p class="list-group-item-text">{{ unit.description }}</p>
+    </div>
+    {% endfor %}
     <div class="container body-content span=8 offset=2">
         <div class="well">
             <form name="user" class="form-horizontal"  method="POST">
                 <fieldset>
-                    <legend>Unit Count</legend>
+                    <legend>Unit Production </legend>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_username">Unit Amount</label>
                         <div class="col-sm-4 ">

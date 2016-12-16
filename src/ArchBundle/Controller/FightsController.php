@@ -4,14 +4,12 @@ namespace ArchBundle\Controller;
 
 
 use ArchBundle\Entity\Base;
-use ArchBundle\Entity\Battle;
-use ArchBundle\Entity\StructureUpgrade;
+use ArchBundle\Entity\UnitName;
 use ArchBundle\Form\AttackFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class FightsController
@@ -60,8 +58,8 @@ class FightsController extends BaseHelperController
                 $attackerUnits = $service->mapAttackerUnits($attackerBase->getUnits());
                 $service->prepareBattle($attackerBase, $defenderBase, $attackerUnits, $before, $this->getDoctrine());
                 return $this->redirectToRoute('fight_players');
-            }catch (Exception $exception){
-                $this->get('session')->getFlashBag()->add('error',$exception->getMessage());
+            } catch (Exception $exception) {
+                $this->get('session')->getFlashBag()->add('error', $exception->getMessage());
                 return $this->render('fight/attackMenu.html.twig', ['form' => $form->createView()]);
             }
         }
@@ -74,25 +72,8 @@ class FightsController extends BaseHelperController
      */
     public function test()
     {
-        $currentBase = $this->getDoctrine()->getRepository(Base::class)->find($this->getBaseAction());
-        $battles = $this->get('services')->getFightService()->getPlayerBattles($currentBase, $this->getDoctrine());
-        /**
-         * @var  $battle Battle
-         */
-        $currentTime = new \DateTime();
-        $timestamp = $currentTime->getTimestamp();
-        $compare = new \DateTime('2016-12-15 20:07');
-        var_dump($compare);
-        //$time=$this->getDoctrine()->getRepository(StructureUpgrade::class)->find(11)->getFinishesOn();
-        var_dump($currentTime->diff($compare)->format('%d days %h hours %i minutes'));
-        $differences = $compare->getTimestamp() - $timestamp;
-        $arr = [];
-        $arr['days'] = floor($differences / 86400);
-        $arr['hours'] = floor(($differences % 86400) / 3600);
-        $arr['minutes'] = floor(($differences % 3600) / 60);
-        $arr['seconds'] = floor($differences % 60);
-        var_dump($arr);
-
+        $unitName = $this->getDoctrine()->getRepository(UnitName::class)->findOneBy(['name' => 'Templar']);
+        var_dump($unitName->getDescription());
     }
 
 }

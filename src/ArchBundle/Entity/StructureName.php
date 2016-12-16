@@ -50,13 +50,36 @@ class StructureName
     private $time;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\UnitStructureDependency",mappedBy="structureRequired")
+     */
+    private $levelRequirements;
+    /**
      * StructureName constructor.
      */
     public function __construct()
     {
+        $this->levelRequirements=new ArrayCollection();
         $this->structureCost=new ArrayCollection();
         $this->structures=new ArrayCollection();
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getLevelRequirements()
+    {
+        return $this->levelRequirements;
+    }
+
+    /**
+     * @param ArrayCollection $levelRequirements
+     */
+    public function setLevelRequirements($levelRequirements)
+    {
+        $this->levelRequirements = $levelRequirements;
+    }
+
 
     /**
      * @return mixed

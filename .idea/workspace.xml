@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="209ca460-a724-4164-84cb-4c36debcf3c9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/user/messageForm.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/user/renderReadMessages.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/user/renderUnreadMessages.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ArchBundle/Form/UserMessageFormType.php" />
+    <list default="true" id="209ca460-a724-4164-84cb-4c36debcf3c9" name="Default" comment="Unit-structure level dependency">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/units/view.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/units/view.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/user/profile.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/user/profile.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/units/produce.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/units/produce.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Controller/UnitsController.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/UnitsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Controller/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/BattleLog.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/BattleLog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/Unit.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/Unit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/UserMessage.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/UserMessage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/UnitViewModel.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/UnitViewModel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperInterface.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/StructureName.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/StructureName.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperService.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelper.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelperInterface.php" afterPath="$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelperInterface.php" />
     </list>
     <ignored path="TheGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="C:\TheGame" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -44,27 +33,26 @@
       <file leaf-file-name="profile.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/user/profile.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="41" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="41" />
+            <state relative-caret-position="187">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
               <folding>
                 <element signature="e#12#26#0#Twig" expanded="false" />
                 <element signature="e#72#86#0#Twig" expanded="false" />
                 <element signature="e#159#174#0#Twig" expanded="false" />
                 <element signature="e#249#271#0#Twig" expanded="false" />
                 <element signature="e#341#362#0#Twig" expanded="false" />
+                <element signature="e#440#459#0#Twig" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="renderUnreadMessages.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/user/renderUnreadMessages.html.twig">
+      <file leaf-file-name="UnitHelperService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-              <folding>
-                <element signature="e#12#26#0#Twig" expanded="false" />
-              </folding>
+            <state relative-caret-position="132">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,72 +60,18 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="131" column="110" selection-start-line="131" selection-start-column="110" selection-end-line="131" selection-end-column="110" />
+            <state relative-caret-position="166">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
-                <element signature="e#4461#4489#0#PHP" expanded="true" />
-                <element signature="e#4631#4645#1#PHP" expanded="true" />
-                <element signature="e#4687#4715#0#PHP" expanded="true" />
-                <element signature="e#5265#5302#0#PHP" expanded="true" />
-                <element signature="e#5776#5811#0#PHP" expanded="true" />
-                <element signature="e#6413#6436#1#PHP" expanded="true" />
-                <element signature="e#6944#6967#1#PHP" expanded="true" />
-                <element signature="e#7155#7178#1#PHP" expanded="true" />
+                <element signature="e#4393#4421#0#PHP" expanded="true" />
+                <element signature="e#4567#4581#1#PHP" expanded="true" />
+                <element signature="e#4623#4651#0#PHP" expanded="true" />
+                <element signature="e#5259#5296#0#PHP" expanded="true" />
+                <element signature="e#5828#5863#0#PHP" expanded="true" />
+                <element signature="e#6536#6559#1#PHP" expanded="true" />
+                <element signature="e#7123#7146#1#PHP" expanded="true" />
+                <element signature="e#7336#7359#1#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="renderReadMessages.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/user/renderReadMessages.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="9" selection-end-column="15" />
-              <folding>
-                <element signature="e#12#26#0#Twig" expanded="false" />
-                <marker date="1481899069909" expanded="true" signature="313:788" ph="..." />
-                <marker date="1481899069909" expanded="true" signature="448:732" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewHelperInterface.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelperInterface.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewHelper.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messageForm.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/user/messageForm.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="15" selection-start-line="3" selection-start-column="3" selection-end-line="9" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StructureController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/StructureController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="51" column="60" selection-start-line="50" selection-start-column="12" selection-end-line="51" selection-end-column="60" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -145,10 +79,30 @@
       <file leaf-file-name="produce.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/units/produce.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnitsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/UnitsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FightsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
-                <element signature="e#12#26#0#Twig" expanded="false" />
+                <element signature="e#42#69#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,13 +116,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ArchBundle/Form/AttackFormType.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Form/ProduceUnitType.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/BaseHelperController.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/StructureServiceController.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/BaseManagementController.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureCost.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureName.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/HomepageController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureUpgrade.php" />
@@ -176,7 +128,6 @@
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitProduction.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/user/register.html.twig" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/Base.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/Battle.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/BattleUnit.php" />
@@ -191,14 +142,10 @@
         <option value="$PROJECT_DIR$/app/Resources/views/fight/attackMenu.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/StructureController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base/viewStructures.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/units/produce.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Structure/StructureHelperService.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/SecurityController.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Entity/BattleLog.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperService.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperInterface.php" />
-        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/UnitsController.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Services/Fight/FightService.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/units/view.html.twig" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/UnitViewModel.php" />
@@ -212,6 +159,13 @@
         <option value="$PROJECT_DIR$/app/Resources/views/user/renderUnreadMessages.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/user/profile.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/user/renderReadMessages.html.twig" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitStructureDependency.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/StructureName.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/units/produce.html.twig" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/UnitsController.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php" />
+        <option value="$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperService.php" />
         <option value="$PROJECT_DIR$/src/ArchBundle/Controller/UserController.php" />
       </list>
     </option>
@@ -324,77 +278,21 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ArchBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ArchBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ArchBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheGame" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -457,32 +355,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TheGame" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -629,7 +501,7 @@
       <workItem from="1481833557582" duration="150000" />
       <workItem from="1481833721570" duration="41000" />
       <workItem from="1481871193314" duration="5286000" />
-      <workItem from="1481885867962" duration="12957000" />
+      <workItem from="1481885867962" duration="17948000" />
     </task>
     <task id="LOCAL-00001" summary="Basic fights &#10;">
       <created>1481660618517</created>
@@ -757,11 +629,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481885924752</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Message system implemented in profile page&#10;">
+      <created>1481899313704</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1481899313704</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260411000" />
+    <option name="totallyTimeSpent" value="265402000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -769,6 +648,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24304539" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -777,7 +657,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -814,7 +693,9 @@
     <MESSAGE value="Time Fixed --- proceed to Logs" />
     <MESSAGE value="End of the Day" />
     <MESSAGE value="minor invalid input messages changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor invalid input messages changes&#10;" />
+    <MESSAGE value="Message system implemented in profile page&#10;" />
+    <MESSAGE value="Unit-structure level dependency" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unit-structure level dependency" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -823,29 +704,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/BattleUnit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Models/ViewModel/PlayerBaseModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/var/bootstrap.php.cache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
-          <caret line="180" column="23" selection-start-line="180" selection-start-column="23" selection-end-line="180" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/var/SymfonyRequirements.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7633">
@@ -982,14 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="90" column="27" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/BattleLog.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1030,26 +880,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/UnitsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1108,32 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/units/produce.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/StructureController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="51" column="60" selection-start-line="50" selection-start-column="12" selection-end-line="51" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-37">
@@ -1150,54 +958,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelperInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/messageForm.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="15" selection-start-line="3" selection-start-column="3" selection-end-line="9" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base/viewStructures.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
           <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
           <folding>
             <element signature="e#1464#1486#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/profile.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="41" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="false" />
-            <element signature="e#72#86#0#Twig" expanded="false" />
-            <element signature="e#159#174#0#Twig" expanded="false" />
-            <element signature="e#249#271#0#Twig" expanded="false" />
-            <element signature="e#341#362#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/renderReadMessages.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="9" selection-end-column="15" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="false" />
-            <marker date="1481899069909" expanded="true" signature="313:788" ph="..." />
-            <marker date="1481899069909" expanded="true" signature="448:732" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1220,19 +986,138 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/renderReadMessages.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="9" selection-end-column="15" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="false" />
+            <marker date="1481899069909" expanded="true" signature="313:788" ph="..." />
+            <marker date="1481899069909" expanded="true" signature="448:732" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelperInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/View/ViewHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/messageForm.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="15" selection-start-line="3" selection-start-column="3" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/StructureController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="51" column="60" selection-start-line="50" selection-start-column="12" selection-end-line="51" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/UnitName.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/StructureName.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="77" column="41" selection-start-line="77" selection-start-column="41" selection-end-line="77" selection-end-column="41" />
+          <folding>
+            <element signature="e#37#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Entity/UnitStructureDependency.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/user/profile.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="false" />
+            <element signature="e#72#86#0#Twig" expanded="false" />
+            <element signature="e#159#174#0#Twig" expanded="false" />
+            <element signature="e#249#271#0#Twig" expanded="false" />
+            <element signature="e#341#362#0#Twig" expanded="false" />
+            <element signature="e#440#459#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/units/produce.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/UnitsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/FightsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArchBundle/Services/Unit/UnitHelperService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ArchBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="131" column="110" selection-start-line="131" selection-start-column="110" selection-end-line="131" selection-end-column="110" />
+        <state relative-caret-position="166">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
-            <element signature="e#4461#4489#0#PHP" expanded="true" />
-            <element signature="e#4631#4645#1#PHP" expanded="true" />
-            <element signature="e#4687#4715#0#PHP" expanded="true" />
-            <element signature="e#5265#5302#0#PHP" expanded="true" />
-            <element signature="e#5776#5811#0#PHP" expanded="true" />
-            <element signature="e#6413#6436#1#PHP" expanded="true" />
-            <element signature="e#6944#6967#1#PHP" expanded="true" />
-            <element signature="e#7155#7178#1#PHP" expanded="true" />
+            <element signature="e#4393#4421#0#PHP" expanded="true" />
+            <element signature="e#4567#4581#1#PHP" expanded="true" />
+            <element signature="e#4623#4651#0#PHP" expanded="true" />
+            <element signature="e#5259#5296#0#PHP" expanded="true" />
+            <element signature="e#5828#5863#0#PHP" expanded="true" />
+            <element signature="e#6536#6559#1#PHP" expanded="true" />
+            <element signature="e#7123#7146#1#PHP" expanded="true" />
+            <element signature="e#7336#7359#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

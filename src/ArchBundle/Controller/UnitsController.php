@@ -4,12 +4,9 @@ namespace ArchBundle\Controller;
 
 use Alpha\B;
 use ArchBundle\Entity\Base;
-use ArchBundle\Entity\ResourceName;
 use ArchBundle\Entity\Unit;
-use ArchBundle\Entity\UnitCost;
 use ArchBundle\Entity\UnitName;
 use ArchBundle\Form\ProduceUnitType;
-use ArchBundle\Models\ViewModel\UnitViewModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Config\Definition\Exception\Exception;
@@ -64,7 +61,7 @@ class UnitsController extends BaseHelperController
                 $this->get('session')->getFlashBag()->add('error', $item->getMessageTemplate());
             }
         }
-        return $this->render("units/produce.html.twig", ['form' => $form->createView()]);
+        return $this->render("units/produce.html.twig", ['form' => $form->createView(),'units'=>$unitName]);
     }
 
 }

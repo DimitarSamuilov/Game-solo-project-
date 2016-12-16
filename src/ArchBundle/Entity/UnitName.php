@@ -25,6 +25,12 @@ class UnitName
     /**
      * @var string
      *
+     * @ORM\Column(name="description",type="text")
+     */
+    private $description;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
@@ -62,6 +68,12 @@ class UnitName
     private $battleUnits;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="ArchBundle\Entity\UnitStructureDependency",mappedBy="unitRequired")
+     */
+    private $neededLevels;
+
+    /**
      * @var
      * @ORM\Column(name="time",type="integer")
      */
@@ -69,10 +81,45 @@ class UnitName
 
     public function __construct()
     {
-        $this->battleUnits=new ArrayCollection();
+        $this->neededLevels=new ArrayCollection();
+        $this->battleUnits = new ArrayCollection();
         $this->units = new ArrayCollection();
         $this->unitCost = new ArrayCollection();
     }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description)
+    {
+        $this->description = $description;
+    }
+
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getNeededLevels()
+    {
+        return $this->neededLevels;
+    }
+
+    /**
+     * @param ArrayCollection $neededLevels
+     */
+    public function setNeededLevels($neededLevels)
+    {
+        $this->neededLevels = $neededLevels;
+    }
+
 
     /**
      * @return mixed
@@ -106,8 +153,6 @@ class UnitName
     {
         $this->battleUnits = $battleUnits;
     }
-
-
 
 
     /**
@@ -208,6 +253,7 @@ class UnitName
     {
         $this->unitCost = $unitCosts;
     }
+
     function __toString()
     {
         return $this->getName();
