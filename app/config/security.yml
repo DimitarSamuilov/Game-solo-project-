@@ -46,4 +46,6 @@ security:
         # additional security lives in the controllers
 #        - { path: '^/(%locale%)/admin', roles: ROLE_ADMIN }
         - { path: '^/admin', roles: ROLE_ADMIN }
+        - { path: '^/command-scheduler', roles: ROLE_ADMIN }
+
 
